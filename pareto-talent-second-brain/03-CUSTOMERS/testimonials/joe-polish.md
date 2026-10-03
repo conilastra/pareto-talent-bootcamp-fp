@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "My executive assistant runs point on critical projects and keeps track of so many endless opportunities."
+> "My executive assistant runs point on critical projects and keeps track of so many endless opportunities. I recommend them on a frequent basis."
 
 — Joe Polish, Founder, Genius Network

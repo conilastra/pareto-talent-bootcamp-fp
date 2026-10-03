@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "I just can't even imagine not having my EA right now. I can't fathom a world where she's not."
+> "I just can't even imagine not having my EA right now. I can't fathom a world where she's not a big part of it."
 
 — Jon Vroman, Founder, Front Row Dads

@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "She is a breath of fresh air! I am amazed at her go getter mentality as well as happy demeanor."
+> "She is a breath of fresh air! I am amazed at her go getter mentality as well as her happy demeanor! She is on top of everything and even learning new things to help me with. Words can't describe how thankful I am to have her!"
 
 — Nick Foster, Client

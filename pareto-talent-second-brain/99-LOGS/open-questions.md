@@ -30,3 +30,6 @@ tags: [log, conflicts]
 | 18 | Salary paid to the network | $1.2M (Day 1) vs $2,192,228 (Day 10 slide) vs "more than $2.2 million" (Ivan, Day 10) | [[bootcamp-day-1]] / [[bootcamp-day-10]] | use $2.2M+ only after confirming; Day 10 is the newest |
 | 19 | Founder's vacation story | "first vacation in 2 years" (Day 1) vs "in 20 years" (Kasim, Day 10) | [[bootcamp-day-1]] / [[bootcamp-day-10]] | don't publish a number |
 | 20 | Ivan's businesses | "Pareto Architects, VC Inc." plus a third, garbled in captions | [[bootcamp-day-10]] | avoid |
+| 21 | Price history | $2,000/month rising to $3,000 on 1 Oct 2024 (Kasim, live 27 Sep 2024) vs $3,600 now (site) vs $2,000 (Outsource Accelerator) | [[nuno-hiring-top-1-percent-live]] | Explains #4: older sources show older prices. Use $3,600 only if the current site still shows it |
+| 22 | Applicants per placement | 2,500 applicants yielded 22 EAs in one 2024 cohort (about 1 in 114) vs "1 in 1,000" on the site | [[nuno-hiring-top-1-percent-live]] | Don't publish either without confirming what is counted (applicants to bootcamp graduates vs to placements) |
+| 23 | EAs in the network | "over 100" (HRIS host intro, 2025) / "100 trained" (Kasim) vs 250+ (Day 10) | [[hriscareers-podcast-kasim-aslam]] | Use the newest official number |

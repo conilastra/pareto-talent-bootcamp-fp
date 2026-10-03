@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "My executive assistant Marina came from Pareto Talent and is just a world-beater."
+> "My executive assistant Marina came from Pareto Talent and is just a world-beater. The best EA I have ever had."
 
 — Justin Donald, Founder, Lifestyle Investor, matched to Marina

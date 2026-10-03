@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "Fabian consistently goes above and beyond in every aspect of his role. He is always punctual and reliable."
+> "Fabian consistently goes above and beyond in every aspect of his role. He takes genuine pride in his work, and it shows in both the quality of what he delivers and the way he represents our company. He is always punctual, reliable, and fully prepared, which makes him someone I can trust without hesitation."
 
 — Kevin Whatley, Client, matched to Fabian

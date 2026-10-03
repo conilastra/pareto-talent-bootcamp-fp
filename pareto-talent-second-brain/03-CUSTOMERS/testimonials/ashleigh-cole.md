@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "Santiago's doing great. I'm really impressed with him so far. Every time I give him something, he jumps."
+> "Santiago's doing great. I'm really impressed with him so far. Every time I give him something, he jumps on it immediately. If he doesn't know the answer, he just gets on a call with people and finds out the answer. He's very self-efficient, which is exactly what I need."
 
 — Ashleigh Cole, Client, matched to Santiago

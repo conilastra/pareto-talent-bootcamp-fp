@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "Everything's going good with Jenny. She's been great. She's done everything I asked her to do."
+> "Everything's going good with Jenny. She's been great. She's done everything I asked her to do, good communication, on the ball, really professional, everything's been really good."
 
 — Dustin McArthur, Matched Jan 2025, matched to Jenny

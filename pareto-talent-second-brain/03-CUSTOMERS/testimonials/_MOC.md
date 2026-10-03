@@ -22,3 +22,4 @@ Also on the homepage: "I would not be nearly as efficient with my assistant if i
 - [[chris-thompson]] — Chris Thompson (Client): "Really good initiative. Great communication. We gelled together very n…"
 - [[bo-royal]] — Bo Royal (Client): "I'm so happy with the decision, I can't imagine going back to like pre…"
 - [[ashleigh-cole]] — Ashleigh Cole (Client): "Santiago's doing great. I'm really impressed with him so far. Every ti…"
+- [[jv-advance-soccer-training]] — video interview: pain, why the annual plan, why Pareto's backing mattered, advice (added from the Wall of Love deep-dive video)

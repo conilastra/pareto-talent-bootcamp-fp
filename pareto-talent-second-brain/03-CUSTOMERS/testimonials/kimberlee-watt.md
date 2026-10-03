@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "Rebecca's a beast. She's on it. She's super efficient and a master task manager."
+> "Rebecca is awesome. Her and I are making so much progress. Everyone really appreciates her. Rebecca's a beast. She's on it. She's super efficient and a master task manager."
 
 — Kimberlee Watt, Client, matched to Rebecca

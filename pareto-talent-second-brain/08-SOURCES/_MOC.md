@@ -23,6 +23,10 @@ updated: 2026-10-03
 - [[bootcamp-day-9]] — Inbox, calendar, project management, SOPs
 - [[bootcamp-day-10]] — Business mapping, Pareto values and perks, after the bootcamp, Final Project brief, scoring and Q&A
 
+## Podcasts and interviews with Kasim (transcripts pasted by the user)
+- [[hriscareers-podcast-kasim-aslam]] (summary) · [[hriscareers-podcast-kasim-aslam-full-transcript]] — HRIS Careers Podcast (Feb 2026): global hiring stack, why LatAm, the Hire framework (fly traps, paid trial)
+- [[nuno-hiring-top-1-percent-live]] (summary) · [[nuno-hiring-top-1-percent-live-full-transcript]] — Live with Nuno Tavares (Sep 2024): Pareto principle, pay above the high-water mark, hiring funnel, retention, Pareto pricing then
+
 ## Documents
 - [[final-project-guidelines]] (full text: [[final-project-guidelines-full-text]]; original .docx and slides in 12-FINAL-PROJECT)
 - [[hire-book]] — HIRE by Kasim Aslam & Ivan Bunin (pages 1–75 read; Steps 3–7 from the official cheat sheet)

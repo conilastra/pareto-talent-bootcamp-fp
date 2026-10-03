@@ -14,6 +14,6 @@ tags: [testimonial]
 status: draft
 ---
 
-> "She's been such a huge help. I think she's awesome. I don't think I could have asked for anyone better."
+> "She's been such a huge help. I think she's awesome. I don't think I could have asked for anyone better. I'm just super pleased. I can't keep highlighting enough how great it's been. I keep referring all of my people to you."
 
 — Marie Monet, Client

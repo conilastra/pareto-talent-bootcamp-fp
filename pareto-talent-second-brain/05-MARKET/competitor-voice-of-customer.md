@@ -3,14 +3,14 @@ type: market
 title: Competitor voice of customer (why founders hire an EA)
 created: 2026-10-03
 updated: 2026-10-03
-sources: ["[[belay-and-viva]]", "[[south-and-donnapro]]", "[[boldly-and-rose]]", "[[hirelatam-and-cloudtask]]"]
+sources: ["[[video-transcripts]]", "[[belay-and-viva]]", "[[south-and-donnapro]]", "[[boldly-and-rose]]", "[[hirelatam-and-cloudtask]]"]
 tags: [competitors, testimonials, voice-of-customer, pains, objections]
 status: draft
 ---
 
 # Competitor voice of customer
 
-375 testimonials and case studies from 8 competitors (BELAY 212, South 100, DonnaPro 21, Viva 16, HireLATAM 9, Boldly 5, Rose 8, CloudTask 4). **These are competitors' clients, not Pareto's.** Full analysis for reading: Google Doc "Why Founders Hire an EA: Competitor Testimonials Analysis" (https://docs.google.com/document/d/13ztu0j86Toju2Ijfs5KknvPyqkjyN0v1K3cNwsKM2M8/edit) and `10-RESEARCH/competitor-testimonials-analysis.md`. Counts are approximate tallies.
+375 written testimonials and case studies from 8 competitors (plus 39 transcribed videos) (BELAY 212, South 100, DonnaPro 21, Viva 16, HireLATAM 9, Boldly 5, Rose 8, CloudTask 4). **These are competitors' clients, not Pareto's.** Latest (v2, all videos): Google Doc "Why Founders Hire an EA: Evidence Pack v2" (https://docs.google.com/document/d/1nm7AuyT1hpgF-8ZKToqxGanPdY1q_r9JHe1DQCSymxg/edit). v1 without the Pareto Drive and Viva videos: https://docs.google.com/document/d/1wvRh5fjLZFlfEh5_q2MVXeUB1u95T9Kz291Lv2I39eg/edit. Earlier version without videos: Google Doc "Why Founders Hire an EA: Competitor Testimonials Analysis" (https://docs.google.com/document/d/13ztu0j86Toju2Ijfs5KknvPyqkjyN0v1K3cNwsKM2M8/edit) and `10-RESEARCH/competitor-testimonials-analysis.md`. Counts are approximate tallies.
 
 ## Source quality
 - **Real founder voice:** BELAY (named, first person, often video) and DonnaPro (named CEOs).
@@ -49,6 +49,15 @@ Proof of value = expansion (Boldly 3→18 EAs) and ~12 BELAY clients hiring the 
 
 ## Objections overcome
 Letting go of control (~35) · handing over inbox/calendar · remote/offshore "won't feel internal" (~16) · cost / "only for successful execs" (~15) · confidentiality (~10; some reframe remote as safer) · voice (~4) · not enough work (~4) · first time with an agency · onboarding takes weeks · "I need to learn how to delegate". Added to [[objections]].
+
+## What the video testimonials add (53 transcribed, including Pareto's 6 and Viva's 9) ([[video-transcripts]])
+- **The breaking moment is concrete:** an email unanswered for a week in front of the team; leaving a wife's birthday party to buy the present; invoicing from a car seat on an anniversary trip; 18-hour days until a tweet: "there's got to be a better way."
+- **Admitting it is the hurdle:** "I did not want to admit that I needed help." "I'll just work more."
+- **They buy the match and the onboarding more than the hours:** BELAY's long questionnaire and interview; "one person, not three or four candidates"; Boldly's dedicated-not-pooled EA; JV's "she was a perfect match... values".
+- **Expectation in one line:** "I needed someone to come to me with a plan" (agenda, decisions needed) and "Can I take the plate?"
+- **Numbers clients say out loud:** 10-20 hours/week back; "15 to 20%" more productive; revenue "almost tripled"; lead conversion "up 10 points"; "accomplished more in that month than in the six months prior"; $80K/year saved (church finance).
+- **Flexibility is value:** "I needed 10 or 15 hours, not 40"; start small and ramp; cancel any time.
+- **Method:** 10/80/10 (you give 10%, EA does 80%, you QC 10%); trust ramp with frequent check-ins at the start; "your 100% and their 80% is good enough."
 
 ## Gap Pareto can own
 No competitor shows a **named founder, in their own words, with a before/after number** for an EA. Emotion without numbers (BELAY, DonnaPro, Boldly) or numbers without voice (South, Rose).

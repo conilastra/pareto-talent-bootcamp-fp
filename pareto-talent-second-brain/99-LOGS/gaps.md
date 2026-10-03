@@ -17,6 +17,5 @@ tags: [log, gaps]
 | 3 | LinkedIn company page (blocked for Claude) | Voice, posts | Paste About + 3–5 recent posts |
 | 3 | 7 Laws of Delegation, Big Three, Sovereignty Brief contents (not in the HIRE book pages read) | Frameworks, lead magnet content | learndelegation.com or webinar workbooks |
 | 3 | Exact /matching form questions | Matching Pareto's real qualifier | Screenshot the form |
-| 2 | Pareto video testimonials (Ryan Casey, Sean Ballew, Mitch Barham, Markus Heitkoetter, Kevin Mohler; Drive IDs in [[paretotalent-wall-of-love]]) + YouTube deep dive 2PkgO_1CxjM | Pareto before/after stories, triggers, client words | This environment can't download or transcribe video. Get transcripts (e.g. upload each mp4 to a transcription tool, or Drive/YouTube captions) and add them to the project |
-| 3 | Day 10 session (final project reveal) | Grader's intent | Transcript if recorded |
-| 3 | Competitor video testimonials (9 Viva, 3 DonnaPro, 3 HireLATAM) and HireLATAM gated case-study PDFs | Richer competitor voice of customer | Transcribe videos manually or download PDFs via their form |
+
+| 3 | Remaining untranscribed video: DonnaPro Renato Lozinšek (YouTube y_-J0IE7a1s). All other competitor and Pareto testimonial videos are done ([[video-transcripts]]). HireLATAM gated PDFs also unread | Competitor voice of customer | Paste the YouTube transcript or request the PDFs |
