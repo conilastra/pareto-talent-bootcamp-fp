@@ -51,3 +51,6 @@ https://execviva.com/resources/comparisons/ — "Viva vs" pages for Athena, BELA
 ## Homepage (https://execviva.com/)
 "The highest-quality remote executive assistants" — "Viva Talent hires, trains, and retains dedicated EAs for your executive team, live in under 24 hours." 300+ executives; "96% first-match success rate"; "Under 4% re-match rate within 30 days"; ISO 27001-aligned security. Process (Viva Match): 30-minute assessment → matched → live within 24 hours → value in ~2 weeks. No lead magnet; CTA "Book a Call".
 
+
+## Lead magnets (re-checked 2026-10-03)
+Still none. Ungated: Success Stories, Security page, /ai page, Blog, comparison pages (vs In-house, Belay, Athena). CTAs "Book a Call", "Get an EA".

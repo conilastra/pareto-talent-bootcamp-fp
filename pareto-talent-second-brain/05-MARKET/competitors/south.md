@@ -14,3 +14,6 @@ status: draft
 
 Latin American remote staffing for US companies (all roles, not EA-specific). Proof: "100+ companies rely on our top 1% talent"; "Latin American salaries are 30-80% less than US-equivalents". Offer: "Free to interview, pay nothing until you hire." Lead magnet → [[south-latam-salary-guide]].
 Same geography and "top 1%" claim as Pareto. Pareto's edge: EA/Right Hand specialist, trained (bootcamp, AI), founder training, guarantees.
+
+## Lead magnets (updated 2026-10-03)
+- [[south-latam-salary-guide]] (email-gated) and [[south-10x-delegation-course]] (free email course, "50+ Tasks to Delegate"). Also a Remote Hiring Guide, Virtual Assistant Guide, Latin America Guide and Skills Glossary; Conil confirms all South resources are email-gated.

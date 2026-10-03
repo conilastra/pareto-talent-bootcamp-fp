@@ -13,6 +13,7 @@ captured: 2026-10-03
 sources: ["https://www.hireinsouth.com/salary-guide"]
 tags: [competitor, lead-magnet, latam, salary-guide]
 status: draft
+note: gate confirmed 2026-10-03 by Conil - all South resources are email-gated
 ---
 
 # South — Latin American Remote Salary Guide
