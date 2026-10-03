@@ -273,3 +273,4 @@ Gmail, Shortwave (recommended, free plan), Superhuman, Spark Mail, Outlook, Yaho
 
 ## Related
 - [[bootcamp-day-8]] (Facebook ads, referenced as "yesterday")
+- [[bootcamp-day-10]] (business mapping, skipped here, covered on Day 10)

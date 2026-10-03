@@ -32,8 +32,13 @@ Confidence: **public** = on paretotalent.com (safe for the landing page) · **sp
 | 40+ hours training, 10-day bootcamp; 104+ sessions/year; 60+ lessons; 36 advanced courses | homepage, our-talent | public |
 | 250+ Right Hands in community | homepage | public |
 | Bootcamp #7: 32,000 visitors → 7,000 started → 1,466 completed → ~800 participate | Day 8 | spoken |
-| Last cohort: 10,381 applied → 709 entered → 247 final projects → 118 Right Hands | Day 1 | spoken |
-| All time: 35K+ applicants, 350 accepted | Day 1 | spoken |
+| Last cohort: 10,381 applied → 709 entered → 247 final projects → 118 Right Hands | Day 1, Day 10 slide | spoken (slide) |
+| All time: 35K+ bootcamp applicants → 2,000+ finished → 350 accepted to Pareto Talent | Day 1, Day 10 slide | spoken (slide) |
+| $2,192,228 paid in salary to the network ("more than $2.2 million", about the last 2.5 years) | Day 10 slide + Ivan | spoken; conflicts with $1.2M, see [[open-questions]] |
+| 250+ in the network; 100+ recorded trainings; goal of 1,000 Right Hands | Day 10 | spoken |
+| ~30 graduates unplaced in the pool; 20+ inactive people offboarded before this cohort | Day 10 | spoken, internal only |
+| ~5 of 100 clients are enterprise (C-suite); the rest founder-led | Day 10 | spoken |
+| $22,000 spent on equipment this year | Day 10 | spoken, internal only |
 
 ## Company
 | Number | Source | Confidence |

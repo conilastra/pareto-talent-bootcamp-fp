@@ -12,4 +12,6 @@ The bootcamp Final Project brief: build a lead magnet and funnel for Pareto Tale
 - `slides/slide-01.jpg` … `slide-12.jpg` — bootcamp slides 33–44 walking through the brief part by part
 - Distilled summary: [[final-project-guidelines]] in 08-SOURCES/documents; what we're working on now: [[current-focus]]
 
-Known conflict: slide 9 (Part 7) says qualified follow-up = 3 emails and unqualified nurture = 1 email; the docx says 2 and 3. Logged in [[open-questions]].
+- [[day-10-clarifications]] — what Ivan and the CSM team added on Day 10 (ads, emails, scoring, build rules)
+
+Resolved on Day 10: qualified follow-up = 3 emails and unqualified = 1; five ad images (see [[day-10-clarifications]]). Earlier note: slide 9 (Part 7) says qualified follow-up = 3 emails and unqualified nurture = 1 email; the docx says 2 and 3. Logged in [[open-questions]].

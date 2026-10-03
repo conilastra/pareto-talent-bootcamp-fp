@@ -20,9 +20,13 @@ tags: [log, conflicts]
 | 8 | Talent countries | Argentina (sales line) vs Latin America vs Argentina, Brazil, Colombia | Day 8 / site / Outsource Accelerator | "Latin America" |
 | 9 | Company size | ~15 employees + ~250 contractors vs 50–99 employees | Day 3 / Outsource Accelerator | avoid |
 | 10 | First cohort graduates | 20 of 24 (slide) vs 11 (Ivan) | Day 1 | avoid |
-| 11 | Final project emails | qualified follow-up 2 vs 3; unqualified nurture 3 vs 1 | guidelines doc vs slide 9 | ask Pareto; building 3 + 3 covers both |
+| 11 | Final project emails | qualified follow-up 2 vs 3; unqualified nurture 3 vs 1 | guidelines doc vs slide 9 | **Resolved Day 10:** 3 qualified + 1 unqualified ([[day-10-clarifications]]) |
 | 12 | "14 systems in their head" | attributed to a "2014 study of 350 entrepreneurs" | Day 1, Day 3 | find original before quoting |
 | 13 | Tim Bratton / Rhapsody first-client story | unverified detail | Day 1 | don't publish |
 | 14 | Review count | 4.9 from 84 Google reviews (Day 1) vs ratingCount 100 in site code | Day 1 / [[paretotalent-homepage-source-code]] | "4.9/5 rating" without a count |
 | 15 | Markets served | US founders (class) vs US, Canada, UK (site code) | Day 3, 6 / site code | target US in the funnel |
 | 16 | Kasim's exits | HIRE book names 2 (GeoFlip 2019, Solutions 8 2022) vs 3 (kasimaslam.com) vs 5 (webinar) | [[hire-book]] | "exited Solutions 8 (8 figures)" |
+| 17 | Number of Facebook ads | 5 (Part 8) vs 3 (an older slide) | [[final-project-guidelines]] vs Part 8 | **Resolved Day 10:** 5 images, 4x5, video optional ([[day-10-clarifications]]) |
+| 18 | Salary paid to the network | $1.2M (Day 1) vs $2,192,228 (Day 10 slide) vs "more than $2.2 million" (Ivan, Day 10) | [[bootcamp-day-1]] / [[bootcamp-day-10]] | use $2.2M+ only after confirming; Day 10 is the newest |
+| 19 | Founder's vacation story | "first vacation in 2 years" (Day 1) vs "in 20 years" (Kasim, Day 10) | [[bootcamp-day-1]] / [[bootcamp-day-10]] | don't publish a number |
+| 20 | Ivan's businesses | "Pareto Architects, VC Inc." plus a third, garbled in captions | [[bootcamp-day-10]] | avoid |

@@ -35,4 +35,5 @@ status: verified
 - Any broken, private or login-walled link disqualifies the whole project. No shortened links.
 - Naming: files `FP_FirstnameLastname_L##_ItemName`; inside tools `FP | Firstname Lastname | Item Name`.
 - Lead magnet must be on-brand (palette, fonts, tone) and useful even if the founder never talks to Pareto.
-- Conflict to confirm: the guidelines doc says qualified follow-up = 2 emails and unqualified nurture = 3; slide 9 says 3 and 1. See [[open-questions]].
+- Resolved on Day 10: qualified follow-up = 3 emails, unqualified = 1 email. Five ad images (4x5), no video needed. Workflows built but left off. See [[day-10-clarifications]].
+- Dates: submit by EOD 2026-10-07 (11:59 PM Uruguay); results and certificates by EOD 2026-10-16. Day 10 source: [[bootcamp-day-10]].

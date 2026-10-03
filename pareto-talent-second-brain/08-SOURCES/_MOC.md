@@ -21,6 +21,7 @@ updated: 2026-10-03
 - [[bootcamp-day-7]] — AI image and video for ads
 - [[bootcamp-day-8]] — Content, personal brand, personas, ads
 - [[bootcamp-day-9]] — Inbox, calendar, project management, SOPs
+- [[bootcamp-day-10]] — Business mapping, Pareto values and perks, after the bootcamp, Final Project brief, scoring and Q&A
 
 ## Documents
 - [[final-project-guidelines]] (full text: [[final-project-guidelines-full-text]]; original .docx and slides in 12-FINAL-PROJECT)

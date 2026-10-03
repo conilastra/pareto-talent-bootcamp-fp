@@ -28,6 +28,7 @@ One framework per file. Day = bootcamp day it was taught.
 - [[skills-and-automation]] — Skills, connectors and automation (Day 4)
 - [[ai-creative-production]] — AI image and video production (Day 7)
 - [[inbox-calendar-closing-loops]] — Inbox, calendar and closing loops (Day 9)
+- [[business-mapping]] — Business Mapping: six-stage spine and the 10-second rule (Day 10)
 - [[four-ps-project-management]] — 4 Ps of project management and SOPs (Day 9)
 - [[seven-laws-of-delegation]] — 7 Laws of Delegation (our-talent, webinar)
 - [[pareto-principle-fractal]] — Pareto Talent (the fractal 80/20) (HIRE book)
