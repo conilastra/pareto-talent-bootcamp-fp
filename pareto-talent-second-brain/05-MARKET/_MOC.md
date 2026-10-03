@@ -26,5 +26,5 @@ updated: 2026-10-03
 - [[athena-delegation-assessment]] — quiz, email gate before results, no qualification.
 - [[belay-delegation-worksheet-guide]] — worksheet, 12-field qualifying form, consultant call.
 - [[south-latam-salary-guide]] — LatAm salary guide, email only, cost angle.
-**Also logged:** [[south-10x-delegation-course]] (free email course, the only delegation-themed competitor magnet), [[hirelatam-job-description-salary-tool]] (interactive JD + salary tool), [[cloudtask-guide-library]] (ungated guides + /compare),  [[magic-100-ea-tasks]] (eBook task list), [[somewhere-global-salary-guide]], [[belay-ea-roi-calculator]] (cost-angle Google Sheet).
+**Also logged:** [[belay-financial-advisors-delegation-guide]] (6-page PDF, email only, vertical niche), [[south-10x-delegation-course]] (free email course, the only delegation-themed competitor magnet), [[hirelatam-job-description-salary-tool]] (interactive JD + salary tool), [[cloudtask-guide-library]] (ungated guides + /compare),  [[magic-100-ea-tasks]] (eBook task list), [[somewhere-global-salary-guide]], [[belay-ea-roi-calculator]] (cost-angle Google Sheet).
 Template: [[competitor-lead-magnets/_template]]
