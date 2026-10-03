@@ -18,4 +18,5 @@ tags: [log, gaps]
 | 3 | 7 Laws of Delegation, Big Three, Sovereignty Brief contents (not in the HIRE book pages read) | Frameworks, lead magnet content | learndelegation.com or webinar workbooks |
 | 3 | Exact /matching form questions | Matching Pareto's real qualifier | Screenshot the form |
 
-| 3 | Remaining untranscribed video: DonnaPro Renato Lozinšek (YouTube y_-J0IE7a1s). All other competitor and Pareto testimonial videos are done ([[video-transcripts]]). HireLATAM gated PDFs also unread | Competitor voice of customer | Paste the YouTube transcript or request the PDFs |
+
+| 3 | HireLATAM's gated case-study PDFs (form-locked) are still unread. All testimonial videos found are transcribed ([[video-transcripts]]) | Competitor voice of customer | Request the PDFs through the forms |

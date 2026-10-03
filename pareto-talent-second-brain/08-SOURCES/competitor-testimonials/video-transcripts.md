@@ -47,8 +47,16 @@ https://www.youtube.com/watch?v=zUfyZUJTi4c (3:24)
 - **Operating rhythm:** clear channels with expected response times; regular live meetings (daily at first, then Tuesdays and Thursdays).
 - **Worth it:** "freed up my time... focus on the new business opportunities that I didn't have time for earlier. And it impacted my business growth."
 
-### D-V2. Renato Lozinšek, agency founder ("Ready to LEAD, Not Learn: Why We Chose DonnaPro For Our Agency")
-https://www.youtube.com/watch?v=y_-J0IE7a1s (3:40). **Captions exist but the transcript panel would not load; not transcribed.** Title alone signals the angle: skip the learning curve (experienced EA, no training burden).
+### D-V2. Renato Lozinšek, co-founder, Empire Media ("Ready to LEAD, Not Learn: Why We Chose DonnaPro For Our Agency")
+https://www.youtube.com/watch?v=y_-J0IE7a1s (3:40). Transcript pasted by the user (captions spell his surname "Luzin" and the company "Empire Media"; the DonnaPro page lists rempire-media.com). Empire Media helps experts grow their business.
+- **Before / pain:** "a lot of admin stuff, finances, legal, logistics, and it was all over the place. We were getting by... but we've all seen that this is far from ideal. And the worst part is that I was the one handling everything." "As co-founder... my job should be to focus on strategy, growth, and the work that I'm best at, not to drown in spreadsheets, invoices, emails, and all the logistical chaos." "I was bleeding time, energy, and also mental clarity on assignments that... weren't the highest use of my brain power."
+- **First idea, then why not:** they considered hiring in-house, part-time or full-time. "When you hire an assistant directly, it's not just the salary. You're ultimately responsible for onboarding, training, sick days, vacations. You have legal obligations. And at the end of the day, you're just crossing your fingers that person is even good. And if you get it wrong, you're literally stuck with someone who has access to your finances, legal stuff, internal processes... all the delicate stuff in the company. And you really don't have an easy way out."
+- **Why DonnaPro:** "Donna doesn't just connect you with an assistant and walk away. They constantly recruit, train and equip all their personnel... So when they actually show up, they are ready not to learn but to lead."
+- **What they skipped:** "We didn't have to recruit. We didn't have to train. We didn't have to worry about contracts, compliance, or even system setup." DonnaPro "selected the perfect fit based on our needs and where the company was at the moment" and is "responsible for her constant development. The only thing that we need to do is just plug her into our world."
+- **Speed:** "Within days, it felt like we had a seasoned operator running point on all the admin work."
+- **Result:** "I got back my time. I got back my energy. I got back my focus. And finally, for the first time in my life, I could pour that energy into things that actually move the company forward."
+- **Closing line:** "If you are drowning in admin work, if your back end in the company is a mess, or if you are constantly distracted by stuff that deep inside you know you shouldn't even be touching... DonnaPro is probably the smartest move that you can make in your company right now."
+- **Angle:** the risk of hiring directly (legal, compliance, onboarding, access to sensitive systems, hard to exit) versus a managed, pre-trained assistant. Same angle as Boldly and Viva ("no recruiting, no managing an extra hire").
 
 ### D-V3. Gonçalo Crespo, music-school owner ("Is a Part-Time Executive Assistant Worth It? (A 6-Month DonnaPro Review)")
 https://www.youtube.com/watch?v=3dM5oUDfCGQ (2:32)
@@ -331,7 +339,7 @@ Short (1:33 to 2:03 min), polished, all tech-company leaders. Captions are Whisp
 | Provider | Videos on the page | Transcribed | Not transcribed |
 |---|---|---|---|
 | Pareto Talent (wall of love) | 6 (5 Google Drive mp4 + 1 YouTube) | 6 (1 from YouTube captions, 5 by speech-to-text) | none |
-| DonnaPro | 3 | 2 | Renato (YouTube transcript panel failed; would need a YouTube download) |
+| DonnaPro | 3 | 3 (Renato's transcript supplied by the user) | none |
 | HireLATAM | 3 | 3 | none |
 | BELAY | 27 YouTube embeds | 27 (some captions cut off after about 3,500 characters; opening and middle captured) | none |
 | Viva | 9 direct mp4 files | 9 (speech-to-text) | none |

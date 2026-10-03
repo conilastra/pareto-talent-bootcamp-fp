@@ -419,7 +419,7 @@ Pareto's Wall of Love already proves the assistant; add the transformation. Ask 
 
 - Counts are approximate tallies, not a formal coding. BELAY counts are ±2.
 - Pages were read through a summarizing fetcher. Quotes were cross-checked where possible; spot-check any quote before publishing it.
-- Video coverage: transcribed from captions: 27 BELAY, 6 Boldly, 2 of 3 DonnaPro, 3 HireLATAM, 1 Pareto (JV). Transcribed by speech-to-text: Pareto's 5 Google Drive videos and Viva's 9 mp4 files (section 9c below). Not transcribed: DonnaPro's Renato video. HireLATAM's full case-study PDFs sit behind a form. Some YouTube transcripts were cut off after about 3,500 characters.
+- Video coverage: transcribed from captions: 27 BELAY, 6 Boldly, 3 of 3 DonnaPro, 3 HireLATAM, 1 Pareto (JV). Transcribed by speech-to-text: Pareto's 5 Google Drive videos and Viva's 9 mp4 files (section 9c below). Renato Lozinšek's DonnaPro video was added from a transcript the user supplied, so no testimonial video found is untranscribed. HireLATAM's full case-study PDFs sit behind a form. Some YouTube transcripts were cut off after about 3,500 characters.
 - Video quotes come from auto-generated captions; names and phrases can be garbled. Check against the video before publishing a quote.
 - Rose's site testimonials are mostly unverifiable and none is clearly an EA hire.
 - Trustpilot's main Rose page was blocked; the Australian copy was used.
