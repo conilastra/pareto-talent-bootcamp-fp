@@ -426,7 +426,7 @@ Pareto's Wall of Love already proves the assistant; add the transformation. Ask 
 
 ## Sources
 
-- Google Doc version 2 (all videos, Kasim interviews): https://docs.google.com/document/d/1nm7AuyT1hpgF-8ZKToqxGanPdY1q_r9JHe1DQCSymxg/edit (v1: https://docs.google.com/document/d/1wvRh5fjLZFlfEh5_q2MVXeUB1u95T9Kz291Lv2I39eg/edit)
+- Google Doc version 3 (all 54 videos incl. Renato, Kasim interviews): https://docs.google.com/document/d/1JXJrOHNRjUvZ9lTnu3yK0josl_i61-JJPAaHz64c5Y4/edit (v2: https://docs.google.com/document/d/1nm7AuyT1hpgF-8ZKToqxGanPdY1q_r9JHe1DQCSymxg/edit) (v1: https://docs.google.com/document/d/1wvRh5fjLZFlfEh5_q2MVXeUB1u95T9Kz291Lv2I39eg/edit)
 
 - Video transcripts: [[video-transcripts]]
 
