@@ -28,3 +28,6 @@ updated: 2026-10-03
 - [[south-latam-salary-guide]] — LatAm salary guide, email only, cost angle.
 **Also logged:** [[belay-financial-advisors-delegation-guide]] (6-page PDF, email only, vertical niche), [[south-10x-delegation-course]] (free email course, the only delegation-themed competitor magnet), [[hirelatam-job-description-salary-tool]] (interactive JD + salary tool), [[cloudtask-guide-library]] (ungated guides + /compare),  [[magic-100-ea-tasks]] (eBook task list), [[somewhere-global-salary-guide]], [[belay-ea-roi-calculator]] (cost-angle Google Sheet).
 Template: [[competitor-lead-magnets/_template]]
+
+## Ads
+- [[competitor-facebook-ads-analysis]] — Facebook ads of BELAY, CloudTask and Pareto (Oct 3 snapshot). Full note in 10-RESEARCH.
