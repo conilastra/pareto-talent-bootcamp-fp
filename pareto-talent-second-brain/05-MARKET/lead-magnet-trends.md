@@ -26,15 +26,15 @@ Full research with sources: `10-RESEARCH/lead-magnet-trends-full-report.md`. Ben
 
 ## Principles
 - **Interactive beats static.** Only 12% finish a downloaded white paper; interactive tools report 85%+ completion.
-- **Qualify, not just attract.** "A lead magnet's real job is to disqualify, not to attract" (GigRadar). Judge by booked qualified calls, not opt-in rate. Fits the final-project routing (qualified → calendar, unqualified → nurture).
+- **Qualify, not just attract.** "A lead magnet's real job is to disqualify, not to attract" (GigRadar). Judge by booked qualified calls, not opt-in rate. Fits routing qualified founders to a calendar and everyone else to a nurture sequence.
 - **Personalized results, segmented follow-up.** See [[scorecard-marketing]].
 - **AI tools** that output a personalized plan are the fastest-growing category.
 
 ## What staffing and founder services use
-- Cost magnets: salary guides ([[south-latam-salary-guide]], [[somewhere-global-salary-guide]]), EA ROI calculator ([[belay-ea-roi-calculator]]).
-- Readiness magnets: delegation quiz ([[athena-delegation-assessment]]), worksheet ([[belay-delegation-worksheet-guide]]), task lists ([[magic-100-ea-tasks]]).
+- Cost magnets: salary guides ([[south-latam-salary-guide]]), EA ROI calculator ([[belay-ea-roi-calculator]]).
+- Readiness magnets: delegation quiz ([[athena-delegation-assessment]]), worksheet ([[belay-delegation-worksheet-guide]]), task lists (BELAY's "25 Things You Can Delegate", South's 50 ideas).
 - Founder services: scorecards ("Are you the bottleneck?"), time-cost calculators, templates, audits.
 - **Gap:** nobody combines readiness + cost and routes to a call by result.
 
 ## For Pareto
-Interactive scorecard or calculator, readiness + cost combined, qualifiers inside, 3–5 result types mapped to personas, optional AI "first 30 days handoff list". Matches candidate ideas 1 and 2 in [[lead-magnet]]. Voice-of-customer support: [[competitor-voice-of-customer]].
+Interactive scorecard or calculator, readiness + cost combined, qualifiers inside, 3–5 result types mapped to personas, optional AI "first 30 days handoff list".  Voice-of-customer support: [[competitor-voice-of-customer]].

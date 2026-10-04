@@ -54,3 +54,7 @@ https://execviva.com/resources/comparisons/ — "Viva vs" pages for Athena, BELA
 
 ## Lead magnets (re-checked 2026-10-03)
 Still none. Ungated: Success Stories, Security page, /ai page, Blog, comparison pages (vs In-house, Belay, Athena). CTAs "Book a Call", "Get an EA".
+
+
+## Correction (2026-10-03)
+Viva does have lead magnets: three ungated calculators and six guides → [[viva-delegation-tools]]. The 'none' above is wrong.

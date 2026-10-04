@@ -12,8 +12,6 @@ status: draft
 
 **Mission:** "Place 1,000 executive assistants with founders — to help entrepreneurs stop being the bottleneck in their own businesses, and to give talented people around the world the same opportunity Ivan got…" ([[paretotalent-about]])
 
-**Project goal framing:** Pareto as *the authority on delegation and founder freedom* ([[current-focus]]).
-
 ## Three beliefs
 1. People are not commodities (above-market pay, meaningful work).
 2. We train both sides (the Right Hand and the founder).

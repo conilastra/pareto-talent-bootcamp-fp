@@ -86,7 +86,6 @@ Pattern: competitors split between **cost** magnets (salary guides, ROI) and **r
 - `05-MARKET/lead-magnet-trends.md`: a distilled version of sections 1–3 (format benchmarks table + the qualify-not-attract principle).
 - `05-MARKET/competitor-lead-magnets/belay-ea-roi-calculator.md`: BELAY's EA ROI calculator (Google Sheet download, CTA "Get Started, takes about 2 minutes") as a cost-angle competitor magnet.
 - `04-FRAMEWORKS/scorecard-marketing.md`: quiz structure (5–7 questions, 3–5 results, gate before results, tag by result).
-- Link from `07-FUNNEL/lead-magnet.md` candidate ideas 1 and 2 to this research, since they match the strongest trends.
 
 ## Sources
 - [Digital Applied: Lead Magnet Conversion Benchmarks 2026](https://www.digitalapplied.com/blog/lead-magnet-conversion-benchmarks-2026-b2b-data-reference)

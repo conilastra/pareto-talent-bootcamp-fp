@@ -8,7 +8,7 @@ promise: "Learn to Delegate and 10x Your Productivity"
 audience: founders and managers who need to delegate, across operations, marketing, finance and sales
 captures_with: email signup (button "Get the Free Course"); other fields not seen
 qualifies_by: none visible
-post_optin: email 1 (Colin Keeley, founder) arrives immediately; contains the 50+ task list; ends with a reply question and a "Start hiring" button
+post_optin: VERIFIED 2026-10-03: email 1 from "Delegation Digest by South" (Beehiiv), subject "50 ideas to delegate & the art of leverage" ([[south-delegation-course-email-1]]); signed by Colin Keeley, founder; contains the 50+ task list; ends with a reply question and a "Start hiring" button
 captured: 2026-10-03
 sources: ["https://www.hireinsouth.com/delegation-course"]
 tags: [competitor, lead-magnet, delegation, direct-overlap]

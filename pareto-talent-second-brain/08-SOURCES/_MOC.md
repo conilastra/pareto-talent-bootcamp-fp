@@ -29,6 +29,7 @@ updated: 2026-10-03
 
 ## Documents
 - [[final-project-guidelines]] (full text: [[final-project-guidelines-full-text]]; original .docx and slides in 12-FINAL-PROJECT)
+- [[kasim-ghostwriter-style-guide-v2]] — Constanza's ghostwriter style guide for Kasim (v2, Sept 2026); distilled in [[kasim-ghostwriter-voice]]
 - [[hire-book]] — HIRE by Kasim Aslam & Ivan Bunin (pages 1–75 read; Steps 3–7 from the official cheat sheet)
 
 ## Competitor testimonials (raw, 2026-10-03)
@@ -37,3 +38,6 @@ updated: 2026-10-03
 ## Raw files (original, unedited)
 - `raw-files/hire-book-arc.pdf` — the full HIRE book PDF (advance reader copy, not for sale)
 - `raw-files/paretotalent-homepage-source.html` — paretotalent.com homepage HTML, used for [[paretotalent-homepage-source-code]]
+
+## Competitor opt-in emails and PDFs (2026-10-03)
+- [[08-SOURCES/competitor-emails/_MOC]]: Athena CLEAR guide email, BELAY Financial Advisor's guide email, South course email 1. PDFs in `raw-files/` (Athena CLEAR guide, BELAY financial advisors guide).

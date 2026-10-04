@@ -1,6 +1,6 @@
 # Pareto Talent Second Brain — rules for Claude
 
-This vault is a company second brain about **Pareto Talent** (paretotalent.com). It exists to build a lead magnet and funnel that moves qualified founders to book a call about the **Right Hand Program**. Every asset should lead a founder to one conclusion: *"I need a Right Hand, and Pareto has one for me."*
+This vault is a company second brain about **Pareto Talent** (paretotalent.com). It is the knowledge base for marketing and sales work: lead magnets, funnels, ads and copy that move qualified founders to book a call about the **Right Hand Program**. Every asset should lead a founder to one conclusion: *"I need a Right Hand, and Pareto has one for me."*
 
 ## How to find things (4 hops)
 1. Open the folder that fits the question (see map below).
@@ -17,12 +17,11 @@ This vault is a company second brain about **Pareto Talent** (paretotalent.com).
 | 04-FRAMEWORKS | every Pareto/bootcamp framework, one per file |
 | 05-MARKET | competitors and competitor lead magnets |
 | 06-BRAND | visual identity, voice, messaging |
-| 07-FUNNEL | business map and funnel assets for the final project |
 | 08-SOURCES | raw source notes (web pages, bootcamp transcripts, documents). Never edit meaning. |
 | 09-DECISIONS | decisions taken, one per file |
 | 10-RESEARCH | full research reports (competitor testimonials analysis, lead magnet trends 2026) |
 | 11-PROMPTS | reusable prompts, incl. the one that built this vault |
-| 12-FINAL-PROJECT | the Final Project brief: original .docx, full text, 12 slide images |
+| 12-FINAL-PROJECT | the Final Project brief only: original .docx, full text, 12 slide images, Day 10 clarifications. Work products for the project live outside this folder (Google Docs in the Drive folder FP_ConstanzaLastra) |
 | 99-LOGS | open questions, conflicts, gaps |
 
 Start every new task by reading `00-CONTEXT/current-focus.md` and `00-CONTEXT/company-overview.md`. Full writing rules for assets are in `00-CONTEXT/brain-instructions.md`.
@@ -31,7 +30,7 @@ Start every new task by reading `00-CONTEXT/current-focus.md` and `00-CONTEXT/co
 
 **Wikilinks**: `[name]` in double square brackets means the file `name.md` somewhere in this folder. Find it with a filename search.
 
-**Where new work goes**: drafts for the funnel (lead magnet, landing page, form, emails, ads, workflows) go in `07-FUNNEL/` and its subfolders; log any decision in `09-DECISIONS/` (one file each) and link it from that folder's `_MOC.md`. Use the frontmatter in `00-CONTEXT/frontmatter-standards.md`.
+**Where new work goes**: log any decision in `09-DECISIONS/` (one file each) and link it from that folder's `_MOC.md`. Use the frontmatter in `00-CONTEXT/frontmatter-standards.md`.
 
 ## Rules
 - Answer from these files and cite the file (and its source) for every fact.

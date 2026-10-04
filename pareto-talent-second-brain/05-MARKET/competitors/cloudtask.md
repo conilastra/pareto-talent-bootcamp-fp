@@ -37,3 +37,7 @@ Same region and similar speed (3–5 profiles in 48 h vs Pareto's 3 in 24 h). Cl
 
 ## Lead magnets (updated 2026-10-03)
 Full ungated guide library and /compare tool: see [[cloudtask-guide-library]].
+
+
+## Update (2026-10-03)
+Homepage targets mainly SaaS GTM roles (SDR, AE, RevOps, engineering); EAs/VAs are one category. Ungated guides: LATAM GTM Salary Guide 2026, AI Operator Playbooks, 2026 LATAM AI Talent Hiring Master Guide (12-page PDF), Why LATAM for GTM Hiring (8-page PDF), Buyer Guide; four more 'coming soon'. Newsletter link in footer (no promise stated).

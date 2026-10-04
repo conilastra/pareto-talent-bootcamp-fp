@@ -25,3 +25,7 @@ HireLATAM is a recruiter: one fee, then the founder employs and manages the EA a
 
 ## Lead magnets (updated 2026-10-03)
 [[hirelatam-job-description-salary-tool]] (interactive JD generator + salary estimator; no email asked, confirmed), plus ungated "vs" pages (Deel, Toptal, Upwork, Remote.com, Near/Somewhere, LATAM vs Philippines) and a cost article. Correction to the above: it does have a lead magnet, the tool.
+
+
+## Update (2026-10-03)
+Price detail: $500 deposit to start, $3,000 on placement. Candidate pools: Colombia, Mexico, Argentina, Costa Rica, Peru, Ecuador. Form asks role, budget, timeline, must-have experience. Also a hiring-cost calculator and 'LATAM vs Philippines' page.

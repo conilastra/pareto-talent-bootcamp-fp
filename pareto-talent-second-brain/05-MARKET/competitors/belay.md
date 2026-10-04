@@ -21,4 +21,12 @@ Contrast for Pareto: US-based talent (higher cost, no AI emphasis); Pareto = Lat
 
 
 ## Lead magnet, vertical version (added 2026-10-03)
-[[belay-financial-advisors-delegation-guide]]: email-only gate (vs the 12-field worksheet form), 6-page PDF for financial advisors. Shows BELAY runs niche versions of its delegation guide with lighter forms.
+[[belay-financial-advisors-delegation-guide]]: email-only gate (vs the generic worksheet, direct or name + email), 6-page PDF for financial advisors. Shows BELAY runs niche versions of its delegation guide with lighter forms.
+
+
+## Update (2026-10-03)
+Homepage: financial solutions too (bookkeeping, payroll, fractional CFO); Inc. 5000 ten years running; 3% acceptance. Extra magnets: "Find Your MVP" guide (mobile number + SMS consent), One Next Step Podcast, Courses, Books & Guides hub (resources.belaysolutions.com/resources/).
+
+
+## Update (2026-10-03, verified by Conil)
+Delegation Worksheet & Guide: the original page gives the PDF directly (no data); the hub page asks name, email, optional phone → [[belay-delegation-worksheet-guide]]. EA ROI Calculator: https://resources.belaysolutions.com/resources/s/executive-assistant-roi-calculator downloads an Excel file with no gate → [[belay-ea-roi-calculator]]. Neither BELAY magnet we tested qualifies by form; BELAY's only qualifying form recorded earlier (12 fields) was not reproduced.

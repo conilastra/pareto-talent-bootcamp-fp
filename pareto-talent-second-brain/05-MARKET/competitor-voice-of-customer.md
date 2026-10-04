@@ -63,7 +63,7 @@ Letting go of control (~35) · handing over inbox/calendar · remote/offshore "w
 No competitor shows a **named founder, in their own words, with a before/after number** for an EA. Emotion without numbers (BELAY, DonnaPro, Boldly) or numbers without voice (South, Rose).
 
 ## Implications
-- Lead magnet: lead with "I'm the bottleneck"; show hidden cost (hours × rate plus life cost); a result type for the burned founder; qualify inside the tool. Supports ideas 1, 2 and 4 in [[lead-magnet]].
+- Lead magnet: lead with "I'm the bottleneck"; show hidden cost (hours × rate plus life cost); a result type for the burned founder; qualify inside the tool.
 - Copy: use their words (see "Competitor clients" in [[client-language]]); pair emotion with a number.
 - Pareto testimonials to collect: trigger moment, what they tried before, hours back, what they do with it, one personal outcome.
 
