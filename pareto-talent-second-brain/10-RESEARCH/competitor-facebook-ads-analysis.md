@@ -87,7 +87,7 @@ Takeaway: Pareto's videos are long for cold Meta traffic; BELAY keeps stories to
 - BELAY's buyer is a leader with a specific operational burden; trust and risk beat price (CloudTask is the cost-led exception).
 - The strongest recurring pain is "work comes back wrong and I redo it", the same as Pareto's HIRE ads.
 - No competitor speaks to founder freedom in a founder's voice.
-- Pareto ads target a situation (burned by hiring); define the ICP also by revenue stage and team size so ads can be segmented (see [[icp]] if present).
+- Pareto ads target a situation (burned by hiring); define the ICP also by revenue stage and team size so ads can be segmented (see [[icp]]).
 
 ## E. Changes to recommendations
 1. Show the lead-magnet cover in every lead-magnet creative until data says otherwise.
