@@ -10,13 +10,13 @@ status: "[to be filled]"
 
 # Qualification criteria
 
-**Decision pending** — record the final choice in [[09-DECISIONS/_MOC]].
+**Decision (2026-10-04, Constanza):** revenue cut-off is $500K a year. The other criteria are in the project's Part 4.
 
 ## Evidence for the cut-off
 | Signal | Value | Source |
 |---|---|---|
 | Revenue floor (ICP) | ~$500K/year | Day 3, Day 8, Day 2 |
-| Revenue on /matching | $100K+/month (~$1.2M/yr) | [[paretotalent-matching]] |
+| Revenue on /matching | $100K+/month (~$1.2M/yr), given as who Pareto's clients are, not a requirement (Conil, 2026-10-04) | [[paretotalent-matching]] |
 | Webinar audience | $50K–$1M/month | [[paretotalent-webinar]] |
 | Sample qualifier taught | tiers <$100K / $100–250K / $250–500K / $500K+, cut at $100K | Day 6 (sample brief, not Pareto's) |
 | Self-select out line | "if you're a business owner doing less than $50,000, it's not for you" | Day 8 |

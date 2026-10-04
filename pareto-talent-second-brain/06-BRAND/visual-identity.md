@@ -43,3 +43,14 @@ https://assets.cdn.filesafe.space/KjTTNn7q7Rl3zed7tzFS/media/65d4092400a2ec10ef5
 
 ## Imagery rules
 Real photos of Kasim and real Right Hands beat stock or AI-looking images; licensed images only; Ivan regrets the clay-figure images on the site (Day 7) and critiqued a yellowish hero with weak contrast (Day 6, an older version). Pareto uses Claude Design for brand consistency.
+
+
+## Verified against the live homepage (2026-10-04)
+No official brand kit was found (no Canva Brand Kit, nothing in Drive), so the live site's CSS is the reference. Checked tokens match the table above (background, surfaces, text, muted, mint accent, ember, 22px card radius, Plus Jakarta Sans, DM Sans). Additional details from the code:
+- **Two greens:** brand green `#10B981` (badges, glows) and mint accent `#50D3A1`. The Program section's main button uses **mint `#50D3A1` with dark text `#04120C`**, weight 800, 16.5px, **14px radius**, padding 18px 34px, and a soft mint shadow (0 18px 44px -18px).
+- **Eyebrow labels:** 13px, weight 700, uppercase, letter-spacing 0.22em, colour mint mixed with 22% white.
+- **Headings:** Plus Jakarta Sans 800, letter-spacing -0.03 to -0.035em, line-height about 1.05. The Program section uses **Hanken Grotesk 800** for display headings and numbers.
+- **Key phrases in headings:** text gradient `#34D399` to `#6EE7B7` to `#14B8A6` (some places use plain mint).
+- **Cards:** surface `#0F151A` or `#141C22`, border white at 7.5% (14% for emphasis), 22px radius, 30px padding, 18px gap.
+- **Background:** near-black with soft mint radial glows (about 10% and 7% opacity).
+- **Hints:** `#697871`.

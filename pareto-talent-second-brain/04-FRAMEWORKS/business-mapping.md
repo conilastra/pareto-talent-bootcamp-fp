@@ -11,7 +11,7 @@ status: draft
 
 # Business Mapping (Day 10)
 
-**What:** a flow chart of every step of a business, from the client's point of view, where each step links to the real asset behind it (page, form, SOP, email, automation, deck, contract, invoice). Ivan: it removes "the anxiety of having way too many moving parts". Final Project Part 2 is a Business Map of the lead magnet funnel; the deliverable is [[business-map]].
+**What:** a flow chart of every step of a business, from the client's point of view, where each step links to the real asset behind it (page, form, SOP, email, automation, deck, contract, invoice). Ivan: it removes "the anxiety of having way too many moving parts".
 
 ## How to draw it
 1. Start left to right with **traffic sources**, only those the business really uses (Facebook, Google Ads, referrals, organic).

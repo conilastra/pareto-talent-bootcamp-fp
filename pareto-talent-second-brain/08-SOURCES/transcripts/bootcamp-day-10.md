@@ -97,4 +97,4 @@ Professional relationship · Pareto's role (matching, interviews, prep, feedback
 Ivan made a nature-documentary-style AI video about the cohort in one take: script from the bootcamp transcripts and community posts, voice via ElevenLabs, video generated in about 12 minutes. Not a funnel asset.
 
 ## Related
-- [[bootcamp-day-9]] · [[business-mapping]] · [[growth-values]] · [[day-10-clarifications]] · [[final-project-guidelines]] · [[business-map]]
+- [[bootcamp-day-9]] · [[business-mapping]] · [[growth-values]] · [[day-10-clarifications]] · [[final-project-guidelines]]

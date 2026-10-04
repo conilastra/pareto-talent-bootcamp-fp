@@ -26,3 +26,7 @@ Rose is the price anchor: $2,500/month vs Pareto's $3,600/month + $3,000 fee, an
 
 ## Lead magnets (re-checked 2026-10-03)
 Still none. Direct CTA "Hire Talent" (/start), role pages, an /ai-advantage page, testimonials.
+
+
+## Update (2026-10-03)
+The homepage now sells any role (marketing, SDR, bookkeeping, property management, 20+ roles) at $2,500/month flat, not just EAs; 4.8/5 rating, 95% trial-to-hire, 7 days to place, founder Jack Benson on LinkedIn. Still no lead magnet; CTA Hire Talent (/start). Team based in the Americas on US hours.

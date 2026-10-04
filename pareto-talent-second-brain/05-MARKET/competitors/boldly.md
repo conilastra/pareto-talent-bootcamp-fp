@@ -27,3 +27,7 @@ Specialist tasks $79/hr. Meet staff before paying.
 - **Proof:** average client retention 4 years ("3.5x longer than competitors"); testimonials: Anna Marie Wagner (SVP, Ginkgo Bioworks, 4 years), Kyle Butler (Permira), Anelle Gandelman (A-List Interiors: "We no longer need to spend nights and weekends catching up with paperwork.").
 - **Lead magnet:** none found. CTA "Get Started".
 - **Vs Pareto:** fractional hours at roughly $65/hour; a full-time equivalent (160 h) would be custom-priced, likely far above Pareto's $3,600/month for a full-time Right Hand.
+
+
+## Update (2026-10-03)
+Lead magnet: not none. The blog has a monthly newsletter (email, segmented by executive vs EA provider; "Get ridiculously helpful insights from Boldly") and a free Virtual Assistant Onboarding Checklist tied to a blog article. Homepage CTA goes to dash.boldly.com/get-started/step1/ (application form). Low priority, no qualifying magnet.

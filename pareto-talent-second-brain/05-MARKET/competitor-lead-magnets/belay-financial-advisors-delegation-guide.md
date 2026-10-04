@@ -8,7 +8,7 @@ promise: "Stop Losing Your Best Hours to Admin Work and Client Follow-Up" / "Rec
 audience: financial advisors, RIAs, wealth management and financial planning firms (vertical niche)
 captures_with: email only (confirmed by Conil, 2026-10-03); CTA "Get the Free Guide"
 qualifies_by: none
-post_optin: the PDF; its last pages pitch BELAY Client Services Assistants and say "we should talk" (GET STARTED WITH BELAY)
+post_optin: VERIFIED 2026-10-03: email "Your Delegation Guide is ready!" from info@belaysolutions.com with the PDF link, "Download Your Guide Again", a "Schedule a call with BELAY" CTA and a referral prompt ([[belay-financial-advisors-guide-email]]). The PDF's last pages pitch BELAY Client Services Assistants and say "we should talk" (GET STARTED WITH BELAY)
 captured: 2026-10-03
 sources: ["https://resources.belaysolutions.com/the-financial-advisors-delegation-guide", "The Financial Advisor's Delegation Guide.pdf (supplied by Conil)"]
 tags: [competitor, lead-magnet, delegation, niche, vertical, email-only]
@@ -24,7 +24,7 @@ Landing page: "Stop Losing Your Best Hours to Admin Work and Client Follow-Up". 
 ## Who it's for
 Financial advisors, RIAs, wealth managers, planners. A **vertical version** of BELAY's generic delegation guide ([[belay-delegation-worksheet-guide]]), same topic, different niche.
 ## How they capture
-Email only, button "Get the Free Guide". Much lighter than the 12-field form on the generic worksheet. Below the form: "About BELAY" (15+ years, nearly 2,000 US-based professionals, match in about a week).
+Email only, button "Get the Free Guide". Same weight as BELAY's generic worksheet (which Conil found direct or name + email). Below the form: "About BELAY" (15+ years, nearly 2,000 US-based professionals, match in about a week).
 ## How they qualify
 Not at all. The niche is the qualifier: only advisors self-select into it.
 ## What's inside the PDF

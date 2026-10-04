@@ -31,7 +31,7 @@ status: draft
 Right Hand + Delegation Mastermind (weekly founder calls) + community of 250+ operators + 10-day AI bootcamp and ongoing training + Second Brain OS + dedicated Client Success Manager + guarantees ([[guarantees]]). From $3,600/month + $3,000 placement fee (homepage). Three hand-picked candidates within 24 hours.
 
 ## Ideal client → [[icp]]
-"Founders running a business past a real revenue floor, who are drowning in admin, and who are personally the bottleneck." ([[bootcamp-day-8]]) US, founder-led, usually $500K+/year revenue, not solo; 7- and 8-figure founders on the website. Personas: [[agency-owner-message-router]], [[expert-who-needs-their-voice]], [[established-firm-avoiding-hr-burden]].
+"Founders running a business past a real revenue floor, who are drowning in admin, and who are personally the bottleneck." ([[bootcamp-day-8]]) US, founder-led, founders doing at least $500K a year (decision 2026-10-04; the website's $100K+ a month describes clients, not a minimum); not solo. Personas: [[founder-who-has-to-do-it-all]], [[founder-burned-before]], [[founder-growth-outran-systems]], [[founder-avoiding-hiring-burden]].
 
 ## Positioning → [[mission-and-positioning]]
 Not a VA marketplace, not a BPO, not a placement agency that disappears. "Not a placement. A complete delegation system." Trains both the Right Hand and the founder.
