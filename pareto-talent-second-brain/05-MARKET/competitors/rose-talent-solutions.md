@@ -23,3 +23,6 @@ status: draft
 
 ## Pareto vs Rose
 Rose is the price anchor: $2,500/month vs Pareto's $3,600/month + $3,000 fee, and a week to place vs Pareto's 3 candidates in 24 hours. Pareto must justify ~$1,100/month more with what Rose doesn't offer: 1-in-1,000 selection with a 10-day bootcamp and AI training, behavioural (PI) matching, the founder's weekly Delegation Mastermind, Freedom 40 and Lifetime Replacement, and 93% retention at 12 months. Prepare for the objection "Rose is $2,500."
+
+## Lead magnets (re-checked 2026-10-03)
+Still none. Direct CTA "Hire Talent" (/start), role pages, an /ai-advantage page, testimonials.

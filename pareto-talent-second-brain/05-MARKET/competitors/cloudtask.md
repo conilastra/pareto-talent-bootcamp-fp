@@ -34,3 +34,6 @@ Ungated hiring guide embedded on the page, "How to hire an executive assistant" 
 
 ## Pareto vs CloudTask
 Same region and similar speed (3–5 profiles in 48 h vs Pareto's 3 in 24 h). CloudTask competes on volume and a $299 entry fee; its proof metric is 85% at 90 days, while Pareto's is **93% at 12 months**. Pareto adds bootcamp and AI training, the founder-side Delegation Mastermind, and Lifetime Replacement vs 6 months.
+
+## Lead magnets (updated 2026-10-03)
+Full ungated guide library and /compare tool: see [[cloudtask-guide-library]].

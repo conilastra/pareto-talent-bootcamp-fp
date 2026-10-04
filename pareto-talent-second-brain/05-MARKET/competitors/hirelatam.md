@@ -22,3 +22,6 @@ Recruiting service for pre-vetted remote Latin American EAs for US companies. He
 
 ## Pareto vs HireLATAM
 HireLATAM is a recruiter: one fee, then the founder employs and manages the EA alone, with a 90-day guarantee. Pareto is a managed program: training (bootcamp, AI), employer of record, CSM, weekly founder mastermind, Lifetime Replacement. Objection to prepare for: "Why pay $3,600/month when I can pay $3,500 once?" Answer from Pareto's own material: "Not a placement. A complete delegation system." / "There's nothing more expensive than a cheap employee." / founders burned by unmanaged hires (60%+).
+
+## Lead magnets (updated 2026-10-03)
+[[hirelatam-job-description-salary-tool]] (interactive JD generator + salary estimator; no email asked, confirmed), plus ungated "vs" pages (Deel, Toptal, Upwork, Remote.com, Near/Somewhere, LATAM vs Philippines) and a cost article. Correction to the above: it does have a lead magnet, the tool.

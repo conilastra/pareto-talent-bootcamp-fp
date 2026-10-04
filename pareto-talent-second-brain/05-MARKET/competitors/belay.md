@@ -19,3 +19,6 @@ Contrast for Pareto: US-based talent (higher cost, no AI emphasis); Pareto = Lat
 ## Service page (https://belaysolutions.com/services/assistant/virtual)
 "Virtual Assistants for the Work That Matters." US-based, fractional, flat monthly pricing (not public), Monday–Friday 9–5 in their time zone. Process: needs assessment → matched with "top 3% vetted talent" → onboarding in as little as a week → Client Success Team. **Right-Fit Guarantee:** "If the match isn't right, we handle the fix — no added cost, no disruption." Proof: "25,000+ leaders". On-page lead magnet: "Delegate Confidently With a Virtual Assistant" guide (phone number required) with the same long qualifying form (revenue, service, industry, source).
 
+
+## Lead magnet, vertical version (added 2026-10-03)
+[[belay-financial-advisors-delegation-guide]]: email-only gate (vs the 12-field worksheet form), 6-page PDF for financial advisors. Shows BELAY runs niche versions of its delegation guide with lighter forms.
