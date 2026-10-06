@@ -1,0 +1,946 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+
+/* ========== EDIT THESE FIVE LINES ========== */
+const WEBHOOK_URL = "https://REPLACE_WITH_GHL_WEBHOOK_URL";
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/Ox9kgq68HPbkomxlJvLm";
+const SITE_URL = "https://paretotalent.com";
+const TERMS_URL = "https://paretotalent.com/terms";
+const PAGE_URL = "https://paretotalentrighthand.lovable.app";
+const SEND_MODE: "json" | "text" | "form" = "json";
+/* =========================================== */
+
+/* OPTIONAL: hero image. Leave it empty and the hero shows the animated tabs demo. Paste a public image address to show a photo instead. */
+const HERO_IMAGE = "";
+const HERO_IMAGE_ALT = "";
+
+/* OPTIONAL: public address of the one-page PDF guide. When set, the result screen shows a download link and the email gets the link. */
+const GUIDE_URL = "https://assets.cdn.filesafe.space/Nh4vnB9j3LG3QfG2YHxx/media/6ac45e90bbad531ac8dc2e5f.pdf";
+
+const LOGO = "https://assets.cdn.filesafe.space/KjTTNn7q7Rl3zed7tzFS/media/65d4092400a2ec10ef5c1bef.png";
+
+type Opt = { label: string; value: string };
+type Loop = { id: string; tab: string; chip: string; brief: string; close: string };
+
+const LOOPS: Loop[] = [
+  { id: "inbox", tab: "Unanswered email", chip: "Did I answer that email?", brief: "Three emails need a decision from you today. I drafted all three replies. Send as written?", close: "Sort your inbox by oldest unanswered and reply to the top one in a single sentence." },
+  { id: "cal", tab: "Calendar clash", chip: "Is my calendar about to double-book me?", brief: "Your 2:00 and 2:30 overlap. I moved the second one to Thursday and told them why. OK to confirm?", close: "Look at tomorrow only. Decline or shorten one meeting that doesn't need you." },
+  { id: "reply", tab: "Waiting on a reply", chip: "Who still owes me a reply?", brief: "Two people haven't answered you in over a week. I wrote a short nudge for each. Want me to send them?", close: "Pick the one that matters most and send one line: Any update? I need to decide by Friday." },
+  { id: "money", tab: "Invoices", chip: "Did I send that invoice? Did they pay?", brief: "One invoice went out late and one was paid twice. I can send the first and refund the duplicate. Should I go ahead?", close: "Find the oldest unpaid invoice and send a one-line reminder with the amount and the date." },
+  { id: "renew", tab: "Renewals", chip: "Is something about to renew or expire?", brief: "Two subscriptions renew next week, and you haven't opened one in months. Keep both or cancel the second?", close: "Search your inbox for renewal and cancel one thing you don't use." },
+  { id: "travel", tab: "Trip not booked", chip: "Did I book the flights, the hotel, the trip?", brief: "Your trip next week still has no hotel. I found two near the venue, one with a late check-in. Book the first?", close: "Book the one thing that only gets more expensive the longer you wait." },
+  { id: "team", tab: "Team waiting on me", chip: "Is someone on my team waiting on me?", brief: "Two people are blocked until you approve something. I put both in one list with the answer I'd suggest. Approve both?", close: "Block 15 minutes at 4 p.m. and clear everything waiting on you in one go." },
+  { id: "gift", tab: "Birthday or gift", chip: "Did I forget a birthday, a gift, a thank-you?", brief: "A client's anniversary with you is Friday and a family birthday is next week. I picked a gift for each. Order both?", close: "Put the next two dates that matter in your calendar with a reminder a week early." },
+  { id: "miss", tab: "Missing something?", chip: "Am I missing something in my inbox?", brief: "Nothing in your inbox needs you right now except one client message. I flagged it at the top and sorted the rest. Want my draft reply?", close: "Pick three set times a day to check email. Outside them, it waits." },
+  { id: "lead", tab: "Follow-up not sent", chip: "That follow-up I never sent", brief: "A lead from last week never got a reply. I drafted a short follow-up in your voice. Send it?", close: "Write down the one lead you're most worried you dropped and send them two sentences today." },
+  { id: "prep", tab: "Meeting prep", chip: "What do I need for tomorrow's meeting?", brief: "Tomorrow's 10 a.m. is prepped. The one decision they'll ask of you is at the top. Want me to send it to your phone?", close: "Before you close the laptop, write the one question you need answered first thing tomorrow." },
+  { id: "head", tab: "Only I know how", chip: "Things only I know how to do", brief: "I wrote down three things only you know how to do: how you onboard clients, the monthly report, and how you approve spend. Check my version?", close: "Pick the one thing only you know how to do and write three bullet points about it. Save them where your team can find them." },
+];
+const LOOP_BY_ID: Record<string, Loop> = Object.fromEntries(LOOPS.map((l) => [l.id, l]));
+
+const ROOTS: Opt[] = [
+  { label: "It's faster to do it myself.", value: "do_it_all" },
+  { label: "The last person who helped made more work for me.", value: "burned" },
+  { label: "The business outgrew how I run it.", value: "outgrown" },
+  { label: "I don't have time to find and train someone.", value: "hiring_weary" },
+];
+
+const TYPES: Record<string, { label: string; pattern: string }> = {
+  do_it_all: {
+    label: "The Do-It-All Founder",
+    pattern: "You tapped the tabs that only exist because you're the one holding them. It's not that nobody could handle them. Explaining it feels slower than doing it. A Right Hand starts by noticing instead of waiting to be told, so there's far less to explain.",
+  },
+  burned: {
+    label: "The Burned Founder",
+    pattern: "You tapped the thought that the last help made more work, not less. That is usually a vetting, training and management problem, not a you problem. The point of a Right Hand is that you stop being the manager.",
+  },
+  outgrown: {
+    label: "The Outgrown Founder",
+    pattern: "Your tabs are the ones that live in your head: what's due, who's waiting, how things get done. The business grew and the systems stayed in you. A Right Hand writes it down and keeps it moving, so it stops depending on your memory.",
+  },
+  hiring_weary: {
+    label: "The Hiring-Weary Founder",
+    pattern: "You know you need help. You don't have the time to find, train and manage someone, and that is the tab that never closes. That's the part Pareto takes: no recruiting, no training, no management headache.",
+  },
+};
+
+type QKey = "country" | "role" | "team" | "revenue" | "timing";
+const QUESTIONS: { key: QKey; title: string; opts: Opt[] }[] = [
+  { key: "country", title: "Where are you based?", opts: [
+    { label: "United States", value: "us" }, { label: "Canada", value: "canada" }, { label: "UK or Europe", value: "uk_eu" }, { label: "Somewhere else", value: "other" },
+  ] },
+  { key: "role", title: "What's your role in the business?", opts: [
+    { label: "Founder, owner or CEO", value: "founder_ceo_owner" }, { label: "Executive or employee", value: "employee" }, { label: "Something else", value: "other" },
+  ] },
+  { key: "team", title: "How many people work in your business?", opts: [
+    { label: "Just me", value: "solo" }, { label: "2 to 5", value: "2_5" }, { label: "6 to 20", value: "6_20" }, { label: "21 or more", value: "21_plus" },
+  ] },
+  { key: "revenue", title: "What does the business make in a year?", opts: [
+    { label: "Under $250K", value: "under_250k" }, { label: "$250K to $500K", value: "250k_500k" }, { label: "$500K to $1M", value: "500k_1m" }, { label: "$1M to $5M", value: "1m_5m" }, { label: "$5M or more", value: "5m_plus" },
+  ] },
+  { key: "timing", title: "When do you want help?", opts: [
+    { label: "Within a month", value: "within_month" }, { label: "In 1 to 3 months", value: "one_to_three" }, { label: "Later, just looking", value: "later" },
+  ] },
+];
+
+type Scene = Partial<Record<QKey, string>>;
+
+export function qualify(q: Scene): { qualified: boolean; reasons: string[] } {
+  const reasons: string[] = [];
+  if (q.role !== "founder_ceo_owner") reasons.push("role");
+  if (!["500k_1m", "1m_5m", "5m_plus"].includes(q.revenue || "")) reasons.push("revenue");
+  if (q.team === "solo") reasons.push("team");
+  if (!["within_month", "one_to_three"].includes(q.timing || "")) reasons.push("timing");
+  return { qualified: reasons.length === 0, reasons };
+}
+
+export function pickType(loops: string[], root: string): string {
+  if (root) return root;
+  return loops.includes("head") || loops.includes("team") ? "outgrown" : "do_it_all";
+}
+
+const tabWord = (n: number) => (n === 1 ? "tab" : "tabs");
+const smallThings = (n: number) => (n === 1 ? "In the meantime, here is a tab you can close yourself today." : n === 2 ? "In the meantime, here are two tabs you can close yourself today." : "In the meantime, here are three tabs you can close yourself today.");
+const smallWords = (n: number) => (n === 1 ? "one tab" : n === 2 ? "two tabs" : "three tabs");
+
+export function tabStatus(n: number): string {
+  return n === 0 ? "Running smoothly" : n <= 3 ? "Running fine" : n <= 7 ? "Getting slower" : "Not responding";
+}
+export function memoryPct(n: number): number {
+  return n === 0 ? 8 : Math.min(96, 14 + n * 8);
+}
+
+const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const withRef = (url: string, ref: string) => url + (url.includes("?") ? "&" : "?") + "ref=" + ref;
+
+const QUAL_HEAD = "Want to open your laptop to zero tabs?";
+const QUAL_BODY = "A Right Hand makes this come true: stays one step ahead, closes the tabs, and comes to you with a plan instead of a question. Trained and ready from day one, so there is no recruiting and no training. Meet three hand-picked profiles in 24 hours.";
+const UNQ_BODY = "We might not be a match yet. Pareto Talent matches founders running a team at $500K a year or more with a Right Hand: your own assistant who stays one step ahead, closes the tabs, and comes to you with a plan instead of a question.";
+const UNQ_PRICE = "A full-time Right Hand starts at $3,600 a month plus a $3,000 placement fee.";
+const UNQ_ASK = "If you still think this is for you:";
+const CTA_LABEL = "Find your Right Hand";
+const START_LABEL = "Check my tabs";
+
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:wght@400;500;600&family=Hanken+Grotesk:wght@700;800&display=swap');
+.pt-root{min-height:100vh;width:100%;box-sizing:border-box;color:#F2F6F4;font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.55;
+background-color:#080D10;background-image:radial-gradient(1100px 620px at 12% 0%,rgba(80,211,161,.10),transparent 60%),radial-gradient(900px 600px at 95% 100%,rgba(80,211,161,.07),transparent 62%);padding:28px 18px 60px;}
+.pt-root *{box-sizing:border-box;}
+.pt-wrap{max-width:660px;margin:0 auto;}
+.pt-wrap.pt-wide{max-width:1040px;}
+.pt-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:44px;align-items:center;}
+.pt-heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.075);display:block;}
+.pt-hero>*{min-width:0;}
+@media (max-width:820px){.pt-hero{grid-template-columns:minmax(0,1fr);gap:28px;}.pt-heroimg{aspect-ratio:4/3;}}
+.pt-logo{height:30px;margin:0 0 28px;display:block;filter:brightness(0) invert(1);}
+.pt-eyebrow{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:color-mix(in srgb,#50D3A1 78%,white 22%);margin:0 0 14px;}
+.pt-h1,.pt-h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0 0 16px;color:#F2F6F4;text-wrap:balance;}
+.pt-h1{font-size:clamp(34px,6vw,52px);}
+.pt-h2{font-size:clamp(26px,4.4vw,36px);}
+.pt-h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;margin:28px 0 12px;color:#F2F6F4;}
+.pt-gr{background:linear-gradient(135deg,#34D399,#6EE7B7,#14B8A6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.pt-lede{color:#9AA9A2;font-size:17px;margin:0 0 26px;}
+.pt-hint{color:#697871;font-size:14px;margin:0 0 12px;}
+.pt-card{background:#0F151A;border:1px solid rgba(255,255,255,.075);border-radius:22px;padding:30px;}
+.pt-progress{height:4px;background:rgba(255,255,255,.075);border-radius:2px;margin:0 0 26px;overflow:hidden;}
+.pt-progress>div{height:4px;background:#10B981;border-radius:2px;transition:width .3s ease;}
+.pt-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 6px;}
+.pt-chip{display:inline-flex;align-items:center;gap:8px;background:#141C22;color:#F2F6F4;border:1px solid rgba(255,255,255,.075);border-radius:999px;padding:11px 18px;font:500 15px 'DM Sans',sans-serif;cursor:pointer;text-align:left;line-height:1.3;transition:border-color .15s,background .15s,color .15s;}
+.pt-chip:hover{border-color:rgba(255,255,255,.14);}
+.pt-chip:focus-visible,.pt-btn:focus-visible,.pt-link:focus-visible,.pt-input:focus-visible,.pt-back:focus-visible{outline:2px solid #50D3A1;outline-offset:2px;}
+.pt-chip[aria-pressed="true"]{border-color:rgba(80,211,161,.55);background:rgba(80,211,161,.10);}
+.pt-dot{flex:0 0 18px;height:18px;border-radius:50%;border:1.5px solid #697871;display:inline-flex;align-items:center;justify-content:center;}
+.pt-chip[aria-pressed="true"] .pt-dot{background:#50D3A1;border-color:#50D3A1;}
+.pt-dot svg{display:none;}
+.pt-chip[aria-pressed="true"] .pt-dot svg{display:block;}
+.pt-label{font-size:15px;font-weight:600;margin:22px 0 10px;color:#F2F6F4;}
+.pt-label small{font-weight:400;color:#697871;font-size:14px;}
+.pt-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#50D3A1;color:#04120C;font:800 16px 'Plus Jakarta Sans',sans-serif;border:none;border-radius:14px;padding:18px 34px;cursor:pointer;text-decoration:none;box-shadow:0 18px 44px -18px color-mix(in srgb,#50D3A1 75%,black);transition:transform .15s,filter .15s;}
+.pt-btn:hover{transform:translateY(-1px);filter:brightness(1.05);}
+.pt-ghost{background:transparent;color:#F2F6F4;border:1px solid rgba(255,255,255,.14);box-shadow:none;}
+.pt-small-btn{padding:9px 16px;font-size:14px;border-radius:10px;flex:0 0 auto;}
+.pt-back{background:none;border:none;color:#9AA9A2;font:500 14px 'DM Sans',sans-serif;cursor:pointer;padding:6px 0;margin:18px 0 0;}
+.pt-back:hover{color:#F2F6F4;}
+.pt-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:24px;}
+.pt-count{color:#9AA9A2;font-size:15px;}
+.pt-field{margin:0 0 14px;}
+.pt-field label{display:block;font-size:14px;color:#9AA9A2;margin:0 0 6px;}
+.pt-input{width:100%;background:#141C22;color:#F2F6F4;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;font:400 16px 'DM Sans',sans-serif;}
+.pt-err{color:#F2B968;font-size:14px;margin:6px 0 0;}
+.pt-check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#9AA9A2;margin:6px 0 18px;}
+.pt-check input{margin-top:4px;accent-color:#10B981;}
+.pt-lock{display:flex;gap:12px;align-items:center;background:#141C22;border:1px solid rgba(255,255,255,.075);border-radius:16px;padding:16px 18px;margin:0 0 22px;font-size:15px;color:#9AA9A2;}
+.pt-lock svg{flex:0 0 22px;}
+.pt-brief{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;padding:16px 0;border-top:1px solid rgba(255,255,255,.075);}
+.pt-brief:first-child{border-top:none;}
+.pt-brief p{margin:0;font-size:16px;}
+.pt-brief button[aria-pressed="true"]{border-color:rgba(80,211,161,.55);color:#50D3A1;}
+.pt-tag{display:inline-block;font-size:12px;font-weight:600;color:#9AA9A2;background:#141C22;border:1px solid rgba(255,255,255,.075);border-radius:8px 8px 0 0;padding:3px 10px;margin:0 0 8px;}
+.pt-note{color:#697871;font-size:13px;margin:14px 0 0;}
+.pt-list{margin:0;padding:0;list-style:none;counter-reset:n;}
+.pt-list li{counter-increment:n;display:flex;gap:14px;margin:0 0 12px;color:#F2F6F4;}
+.pt-list li:before{content:counter(n);flex:0 0 28px;height:28px;border-radius:50%;background:rgba(80,211,161,.12);color:#50D3A1;font:800 14px 'Hanken Grotesk',sans-serif;display:inline-flex;align-items:center;justify-content:center;}
+.pt-ok{color:#50D3A1;font-weight:600;margin:20px 0 6px;}
+.pt-cta{margin-top:30px;background:#0F151A;border:1px solid rgba(80,211,161,.35);border-radius:22px;padding:28px;}
+.pt-cta h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:24px;letter-spacing:-.02em;margin:0 0 10px;}
+.pt-cta p{color:#9AA9A2;margin:0 0 18px;}
+.pt-cta .pt-sub{margin:10px 0 0;font-size:13px;color:#697871;}
+.pt-links a{color:#50D3A1;}
+.pt-frame{background:#0F151A;border:1px solid rgba(255,255,255,.14);border-radius:16px;overflow:hidden;margin:0 0 22px;}
+.pt-sticky{position:sticky;top:10px;z-index:5;}
+.pt-strip{display:flex;gap:2px;padding:10px 10px 0;min-height:46px;align-items:flex-end;background:#0B1115;}
+.pt-tab{flex:1 1 0;min-width:0;max-width:160px;height:36px;display:flex;align-items:center;gap:7px;padding:0 9px;background:#141C22;border:1px solid rgba(255,255,255,.075);border-bottom:none;border-radius:9px 9px 0 0;font-size:12px;color:#F2F6F4;overflow:hidden;white-space:nowrap;transition:flex-basis .3s ease,opacity .3s ease,padding .3s ease,border-width .3s ease;}
+.pt-tab.pt-out{flex:0 0 0;max-width:0;padding:0;opacity:0;border-width:0;}
+.pt-tab.pt-ghosttab{color:#697871;}
+.pt-tt{overflow:hidden;text-overflow:ellipsis;flex:1 1 auto;min-width:0;}
+.pt-x{flex:0 0 auto;color:#697871;font-size:14px;line-height:1;}
+.pt-fav{flex:0 0 12px;height:12px;border-radius:50%;background:#50D3A1;}
+.pt-fav.pt-spin{background:transparent;border:2px solid #697871;border-top-color:transparent;animation:pt-spin 1.2s linear infinite;}
+@keyframes pt-spin{to{transform:rotate(360deg);}}
+@keyframes pt-pulse{0%,100%{opacity:1;}50%{opacity:.45;}}
+.pt-fbody{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 18px;border-top:1px solid rgba(255,255,255,.075);flex-wrap:wrap;}
+.pt-fcount{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0;line-height:1.1;}
+.pt-fstat{font-size:14px;color:#9AA9A2;margin:2px 0 0;}
+.pt-mem{flex:1 1 180px;max-width:260px;font-size:12px;color:#9AA9A2;}
+.pt-track{height:8px;background:rgba(255,255,255,.075);border-radius:4px;overflow:hidden;margin-top:6px;}
+.pt-fill{height:8px;border-radius:4px;transition:width .35s ease,background-color .35s ease;}
+.pt-fill.pt-pulse{animation:pt-pulse 1s ease-in-out infinite;}
+.pt-stats{display:flex;gap:34px;flex-wrap:wrap;margin:44px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.075);}
+.pt-stat b{font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:32px;color:#50D3A1;display:block;line-height:1;margin:0 0 4px;}
+.pt-stat span{font-size:13.5px;color:#9AA9A2;}
+.pt-sec{margin:84px 0 0;}
+.pt-sech{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(26px,4vw,36px);letter-spacing:-.03em;line-height:1.08;margin:0 0 10px;color:#F2F6F4;text-wrap:balance;}
+.pt-secp{color:#9AA9A2;font-size:17px;margin:0 0 30px;max-width:640px;}
+.pt-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.pt-how .pt-card{padding:26px;}
+.pt-how h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em;margin:14px 0 8px;line-height:1.2;}
+.pt-how p{color:#9AA9A2;margin:0;font-size:15.5px;}
+.pt-numc{width:34px;height:34px;border-radius:50%;background:rgba(80,211,161,.12);color:#50D3A1;font:800 16px 'Hanken Grotesk',sans-serif;display:flex;align-items:center;justify-content:center;}
+.pt-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start;}
+.pt-checks{margin:0;padding:0;list-style:none;}
+.pt-checks li{display:flex;gap:12px;margin:0 0 14px;font-size:17px;color:#F2F6F4;}
+.pt-checks li:before{content:"\\2713";flex:0 0 22px;height:22px;border-radius:50%;background:#50D3A1;color:#04120C;font:800 12px 'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.pt-sample{background:#0F151A;border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 24px;}
+.pt-sample .pt-brief{padding:14px 0;}
+.pt-fake{flex:0 0 auto;font:700 14px 'Plus Jakarta Sans',sans-serif;color:#F2F6F4;border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:8px 14px;}
+.pt-quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.pt-quote{background:#0F151A;border:1px solid rgba(255,255,255,.075);border-radius:22px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;}
+.pt-quote p{margin:0;font-size:18px;line-height:1.5;color:#F2F6F4;}
+.pt-who{font-size:14px;color:#9AA9A2;}
+.pt-who b{color:#F2F6F4;font-weight:600;display:block;}
+.pt-landfoot{margin:60px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.075);color:#697871;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.pt-landfoot a{color:#9AA9A2;}
+@media (max-width:820px){.pt-how,.pt-two,.pt-quotes{grid-template-columns:minmax(0,1fr);}.pt-sec{margin-top:64px;}}
+.pt-stickycta{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(8,13,16,.94);border-top:1px solid rgba(255,255,255,.075);padding:12px 18px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.pt-stickycta .pt-btn{width:100%;max-width:420px;padding:16px 24px;}
+.pt-steplist{display:grid;gap:14px;}
+.pt-stepc{display:flex;gap:18px;align-items:flex-start;background:#0F151A;border:1px solid rgba(255,255,255,.075);border-radius:20px;padding:22px;}
+.pt-stepc h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em;margin:0 0 6px;line-height:1.2;}
+.pt-stepc p{margin:0;color:#9AA9A2;font-size:16px;}
+.pt-when{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6EE7B7;margin:0 0 4px;}
+.pt-story{color:#9AA9A2;font-size:17px;max-width:720px;}
+.pt-story p{margin:0 0 14px;}
+.pt-story b{color:#F2F6F4;font-weight:600;}
+.pt-pull{border-left:3px solid #50D3A1;padding:4px 0 4px 18px;margin:20px 0;color:#F2F6F4;font-size:19px;line-height:1.45;max-width:720px;}
+@media (prefers-reduced-motion:reduce){.pt-fav.pt-spin,.pt-fill.pt-pulse{animation:none;}.pt-tab,.pt-fill{transition:none;}}
+@media (max-width:560px){.pt-card{padding:22px;}.pt-btn{width:100%;}.pt-brief{flex-direction:column;}.pt-small-btn{width:auto;}.pt-fbody{padding:12px 14px;gap:10px;}.pt-fcount{font-size:22px;}.pt-mem{flex:1 1 130px;max-width:none;}}
+`;
+
+const Check = () => (
+  <svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.5l2.2 2.2L9.5 3.6" fill="none" stroke="#04120C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
+
+function TabFrame({ ids, shown, sticky, done }: { ids: string[]; shown: number; sticky?: boolean; done?: boolean }) {
+  const slow = shown >= 4;
+  const spin = (0.9 + shown * 0.18).toFixed(2) + "s";
+  const pct = memoryPct(shown);
+  const color = shown <= 3 ? "#34D399" : "#E0973F";
+  return (
+    <div className={"pt-frame" + (sticky ? " pt-sticky" : "")}>
+      <div className="pt-strip">
+        {ids.length === 0 && (
+          <div className="pt-tab pt-ghosttab"><span className="pt-tt">New tab</span></div>
+        )}
+        {ids.map((id, i) => (
+          <div key={id} className={"pt-tab" + (i >= shown ? " pt-out" : "")}>
+            <span className={"pt-fav" + (slow ? " pt-spin" : "")} style={slow ? { animationDuration: spin } : undefined} aria-hidden="true" />
+            <span className="pt-tt">{LOOP_BY_ID[id].tab}</span>
+            <span className="pt-x" aria-hidden="true">×</span>
+          </div>
+        ))}
+      </div>
+      <div className="pt-fbody">
+        <div aria-live="polite">
+          <p className="pt-fcount">{shown === 0 ? "No tabs open" : shown + " " + tabWord(shown) + " open"}</p>
+          <p className="pt-fstat">{done && shown === 0 ? "Handled. Waiting for your OK." : tabStatus(shown)}</p>
+        </div>
+        <div className="pt-mem">
+          Brain memory
+          <div className="pt-track"><div className={"pt-fill" + (shown >= 8 ? " pt-pulse" : "")} style={{ width: pct + "%", backgroundColor: color }} /></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const TESTIMONIALS = [
+  { quote: "It's only day 2 and I am already feeling such a relief that I have her during this crucial time in my business.", name: "Daneen Goncalves", role: "Pareto Talent client, matched to Mariela" },
+  { quote: "I won't even tell her to do it, and she'll just go and figure out how to do it.", name: "Elina Panteleyeva", role: "Pareto Talent client, matched to Catalina" },
+  { quote: "My executive assistant runs point on critical projects and keeps track of so many endless opportunities.", name: "Joe Polish", role: "Founder of Genius Network" },
+  { quote: "I've had three different executive assistants before, and I thought it was me, right? I was burning through them.", name: "Eric Ritter", role: "Pareto Talent client, matched to Agustina" },
+];
+
+function Landing() {
+  return (
+    <div>
+      <div className="pt-stats">
+        <div className="pt-stat"><b>4.9</b><span>Google rating</span></div>
+        <div className="pt-stat"><b>100+</b><span>founders served</span></div>
+        <div className="pt-stat"><b>93%</b><span>of placements still together after 12 months</span></div>
+      </div>
+
+      <section className="pt-sec">
+        <h2 className="pt-sech">How it works</h2>
+        <p className="pt-secp">Three steps. About a minute. Nothing to type.</p>
+        <div className="pt-how">
+          <div className="pt-card"><div className="pt-numc">1</div><h3>Tap what's open</h3><p>Choose the tabs that are open in your head: emails, follow-ups, decisions. Tap as many as ring true.</p></div>
+          <div className="pt-card"><div className="pt-numc">2</div><h3>See how a Right Hand would handle them</h3><p>Not just an executive assistant: a Right Hand. Instead of waiting to be told, they notice what's missing and come to you with a plan. You get one for each tab, ready for your OK.</p></div>
+          <div className="pt-card"><div className="pt-numc">3</div><h3>Take it with you</h3><p>Your plan arrives by email with three tabs you can close yourself today, plus a free one-page guide to print.</p></div>
+        </div>
+      </section>
+
+      <section className="pt-sec">
+        <h2 className="pt-sech">What's in your Tab Cleanup Plan</h2>
+        <p className="pt-secp">Useful whether or not you ever talk to us.</p>
+        <div className="pt-two">
+          <ul className="pt-checks">
+            <li>Your open tabs, counted</li>
+            <li>A plan for each one, ready for your OK</li>
+            <li>What we noticed about how you work</li>
+            <li>Three tabs you can close yourself today</li>
+            <li>A free one-page guide to print (PDF)</li>
+          </ul>
+          <div className="pt-sample" aria-label="A sample of the plan">
+            <p className="pt-hint" style={{ marginBottom: 4 }}>A sample of what you'll see</p>
+            {LOOPS.slice(0, 3).map((l) => (
+              <div className="pt-brief" key={l.id}>
+                <div><span className="pt-tag">{l.tab}</span><p>{l.brief}</p></div>
+                <span className="pt-fake" aria-hidden="true">Approve</span>
+              </div>
+            ))}
+            <p className="pt-note">Examples of what a Right Hand brings you, not a record of your business.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="pt-sec">
+        <h2 className="pt-sech">What Pareto Talent clients say about their Right Hand</h2>
+        <p className="pt-secp">In their own words, from the Wall of Love.</p>
+        <div className="pt-quotes">
+          {TESTIMONIALS.map((t) => (
+            <figure key={t.name} className="pt-quote" style={{ margin: 0 }}>
+              <p>"{t.quote}"</p>
+              <figcaption className="pt-who"><b>{t.name}</b>{t.role}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="pt-links" style={{ margin: "18px 0 0" }}><a href="https://paretotalent.com/wall-of-love">Read more on the Wall of Love</a></p>
+      </section>
+
+
+
+      <div className="pt-landfoot">
+        <span>Pareto Talent</span>
+        <span><a href={SITE_URL}>paretotalent.com</a> &nbsp;|&nbsp; <a href={TERMS_URL}>Terms and privacy</a></span>
+      </div>
+    </div>
+  );
+}
+
+const BOOKED_QUOTES = [
+  { quote: "I just can't even imagine not having my EA right now. I can't fathom a world where she's not a big part of it.", name: "Jon Vroman", role: "Founder of Front Row Dads" },
+  { quote: "My executive assistant Marina came from Pareto Talent and is just a world-beater. The best EA I have ever had.", name: "Justin Donald", role: "Founder of Lifestyle Investor" },
+  { quote: "He is always punctual, reliable, and fully prepared, which makes him someone I can trust without hesitation.", name: "Kevin Whatley", role: "Pareto Talent client, matched to Fabian" },
+];
+
+function BookedPage() {
+  return (
+    <div className="pt-root">
+      <style>{CSS}</style>
+      <div className="pt-wrap">
+        <img className="pt-logo" src={LOGO} alt="Pareto Talent" />
+        <p className="pt-eyebrow">Your Matching Call is booked</p>
+        <h1 className="pt-h1">You're booked. Here is <span className="pt-gr">what happens next</span>.</h1>
+        <p className="pt-lede">Check your email for the confirmation and the calendar invite. Until then, here is exactly what to expect, so there are no surprises.</p>
+
+        <section className="pt-sec" style={{ marginTop: 40 }}>
+          <h2 className="pt-sech">What to expect next</h2>
+          <p className="pt-secp">Five steps, from this page to your first weeks with a Right Hand.</p>
+          <div className="pt-steplist">
+            <div className="pt-stepc"><div className="pt-numc">1</div><div><p className="pt-when">Right now</p><h3>Check your confirmation</h3><p>Your confirmation and calendar invite are on their way. Add the call to your calendar so it doesn't slip.</p></div></div>
+            <div className="pt-stepc"><div className="pt-numc">2</div><div><p className="pt-when">Your Matching Call</p><h3>We learn how you work</h3><p>A 30-minute conversation to confirm the fit and understand where you're stuck and what you want off your plate. We then brief the matching team.</p></div></div>
+            <div className="pt-stepc"><div className="pt-numc">3</div><div><p className="pt-when">Within 24 hours</p><h3>You get three hand-picked profiles</h3><p>Three Right Hand candidates, matched to your values, your personality and the way you work. Three, not thirty.</p></div></div>
+            <div className="pt-stepc"><div className="pt-numc">4</div><div><p className="pt-when">Your choice</p><h3>You interview them and choose</h3><p>Meet all three and pick the one you click with. There is no contract until you find your person.</p></div></div>
+            <div className="pt-stepc"><div className="pt-numc">5</div><div><p className="pt-when">Your first 30 days</p><h3>Your Right Hand joins you</h3><p>You start with a dedicated Client Success Manager, and your Right Hand takes over your inbox, calendar and follow-ups step by step.</p></div></div>
+          </div>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Before the call</h2>
+          <p className="pt-secp">Ten minutes of thinking makes the call far more useful.</p>
+          <ul className="pt-checks">
+            <li>Pick the three tabs that weigh on you most. Your Tab Cleanup Plan has them.</li>
+            <li>Think about what you would hand over first if someone could be trusted with it.</li>
+            <li>If someone else shares the decision, invite them to the call.</li>
+          </ul>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Who you're dealing with</h2>
+          <div className="pt-story">
+            <p><b>Kasim Aslam</b> hired <b>Ivan Bunin</b>, then 18, as his executive assistant in 2018. Ivan grew from assistant to CTO and partner as Kasim's agency, Solutions 8, grew to a team of 60 and was acquired in 2022.</p>
+            <p>That experience is why Pareto Talent exists.</p>
+          </div>
+          <p className="pt-pull">"We didn't build another staffing agency. We built the program we both wish had existed, one that trains the EA and trains the founder."</p>
+          <div className="pt-stats" style={{ marginTop: 28 }}>
+            <div className="pt-stat"><b>100+</b><span>founders served</span></div>
+            <div className="pt-stat"><b>93%</b><span>of placements still together after 12 months</span></div>
+            <div className="pt-stat"><b>4.9</b><span>Google rating</span></div>
+          </div>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Your protection</h2>
+          <p className="pt-secp">You don't carry the risk of the match.</p>
+          <ul className="pt-checks">
+            <li><span><b>Matching Guarantee.</b> If you're not excited about your matches, it costs you nothing.</span></li>
+            <li><span><b>Lifetime Replacement.</b> If a placement doesn't work out, any time and for any reason, we replace it free of charge.</span></li>
+          </ul>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">What it costs</h2>
+          <p className="pt-secp">So there are no surprises on the call: the Right Hand Program starts at $3,600 a month, plus a one-time $3,000 placement fee. Quarterly and annual plans are available, and we'll go through the options with you.</p>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">What clients say</h2>
+          <p className="pt-secp">In their own words, from the Wall of Love.</p>
+          <div className="pt-quotes">
+            {BOOKED_QUOTES.map((t) => (
+              <figure key={t.name} className="pt-quote" style={{ margin: 0 }}>
+                <p>"{t.quote}"</p>
+                <figcaption className="pt-who"><b>{t.name}</b>{t.role}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="pt-links" style={{ margin: "18px 0 0" }}><a href="https://paretotalent.com/wall-of-love">Read more on the Wall of Love</a></p>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">While you wait</h2>
+          <p className="pt-secp" style={{ marginBottom: 10 }}>Need to move the call or have a question? Use the link in your confirmation email, or reply to it.</p>
+          {GUIDE_URL && (
+            <p className="pt-links" style={{ margin: 0 }}>Want to close a few tabs yourself first? <a href={GUIDE_URL}>Download the one-page guide (PDF)</a>. Print it. Tick it. Close it.</p>
+          )}
+        </section>
+
+        <div className="pt-landfoot">
+          <span>Pareto Talent</span>
+          <span><a href={SITE_URL}>paretotalent.com</a> &nbsp;|&nbsp; <a href={TERMS_URL}>Terms and privacy</a></span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ThanksSections({ showGuide }: { showGuide: boolean }) {
+  return (
+    <>
+        <section className="pt-sec" style={{ marginTop: 40 }}>
+          <h2 className="pt-sech">What to expect next</h2>
+          <div className="pt-steplist">
+            <div className="pt-stepc"><div className="pt-numc">1</div><div><p className="pt-when">Now</p><h3>Open your email</h3><p>Your plan shows how a Right Hand would handle each of your tabs, ready for your OK. Look in your spam folder if it hasn't arrived.</p></div></div>
+            <div className="pt-stepc"><div className="pt-numc">2</div><div><p className="pt-when">Today</p><h3>Close three tabs yourself</h3><p>Pick the three that weigh on you most and do the two-minute move for each. The one-page guide below lists them all.</p></div></div>
+            <div className="pt-stepc"><div className="pt-numc">3</div><div><p className="pt-when">When things change</p><h3>Come back if it fits</h3><p>The Right Hand Program is built for founders running a team at $500K a year or more. If that's you soon, or you still think it's right for you today, you can book a Matching Call.</p></div></div>
+          </div>
+        </section>
+
+        {showGuide && GUIDE_URL && (
+          <section className="pt-sec">
+            <h2 className="pt-sech">Your free guide</h2>
+            <p className="pt-secp">One page. Print it, tick it and close your tabs.</p>
+            <a className="pt-btn" href={GUIDE_URL}>Download the one-page guide (PDF)</a>
+          </section>
+        )}
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Three habits to keep them closed</h2>
+          <ul className="pt-checks">
+            <li><span><b>Friday, 15 minutes.</b> Open next week's calendar, protect two blocks for deep work and leave a buffer between calls.</span></li>
+            <li><span><b>One list, with dates.</b> Every open tab gets a date. If it has no date, it is still living in your head.</span></li>
+            <li><span><b>End every message with a next step.</b> Who does what, by when.</span></li>
+          </ul>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Why we said "not a match yet"</h2>
+          <p className="pt-secp">We'd rather be honest than waste your time. {UNQ_BODY.replace("We might not be a match yet. ", "")} {UNQ_PRICE}</p>
+          <p className="pt-secp" style={{ marginBottom: 18 }}>{UNQ_ASK}</p>
+          <a className="pt-btn pt-ghost" href={BOOKING_URL}>{CTA_LABEL}</a>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">What Pareto Talent clients say</h2>
+          <div className="pt-quotes">
+            {TESTIMONIALS.slice(0, 2).map((t) => (
+              <figure key={t.name} className="pt-quote" style={{ margin: 0 }}>
+                <p>"{t.quote}"</p>
+                <figcaption className="pt-who"><b>{t.name}</b>{t.role}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Know a founder who would love this?</h2>
+          <p className="pt-secp" style={{ marginBottom: 10 }}>Forward them your email, or send them the tab count.</p>
+          <p className="pt-links" style={{ margin: 0 }}><a href={withRef(PAGE_URL, "forward")}>Share the tab count</a></p>
+        </section>
+
+        <section className="pt-sec">
+          <h2 className="pt-sech">Questions?</h2>
+          <p className="pt-secp">Reply to the email we sent you and we'll get back to you.</p>
+        </section>
+
+        <div className="pt-landfoot">
+          <span>Pareto Talent</span>
+          <span><a href={SITE_URL}>paretotalent.com</a> &nbsp;|&nbsp; <a href={TERMS_URL}>Terms and privacy</a></span>
+        </div>
+    </>
+  );
+}
+
+function ThanksPage() {
+  return (
+    <div className="pt-root">
+      <style>{CSS}</style>
+      <div className="pt-wrap">
+        <img className="pt-logo" src={LOGO} alt="Pareto Talent" />
+        <p className="pt-eyebrow">Thank you</p>
+        <h1 className="pt-h1">Your Tab Cleanup Plan is <span className="pt-gr">on its way</span>.</h1>
+        <p className="pt-lede">Check your inbox. It has your plan, three tabs you can close today and the one-page guide. Here is what happens next.</p>
+        <ThanksSections showGuide />
+      </div>
+    </div>
+  );
+}
+
+const HERO_IDS = LOOPS.slice(0, 9).map((l) => l.id);
+
+function HeroDemo() {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    const reduce = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setN(6);
+      return;
+    }
+    let c = 0;
+    let dir = 1;
+    let timer: number | undefined;
+    const tick = () => {
+      let delay: number;
+      if (dir === 1) {
+        c += 1;
+        setN(c);
+        if (c >= HERO_IDS.length) {
+          dir = -1;
+          delay = 1500;
+        } else delay = 420;
+      } else {
+        c -= 1;
+        setN(c);
+        if (c <= 0) {
+          dir = 1;
+          delay = 1600;
+        } else delay = 260;
+      }
+      timer = window.setTimeout(tick, delay);
+    };
+    timer = window.setTimeout(tick, 700);
+    return () => {
+      if (timer !== undefined) window.clearTimeout(timer);
+    };
+  }, []);
+  return (
+    <div aria-hidden="true">
+      <TabFrame ids={HERO_IDS} shown={n} />
+    </div>
+  );
+}
+
+export default function OpenTabs() {
+  const [step, setStep] = useState(0);
+  const [loops, setLoops] = useState<string[]>([]);
+  const [root, setRoot] = useState("");
+  const [scene, setScene] = useState<Scene>({});
+  const [showMissing, setShowMissing] = useState(false);
+  const [loopErr, setLoopErr] = useState("");
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
+  const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [errs, setErrs] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed" | "demo">("idle");
+  const [approved, setApproved] = useState<string[]>([]);
+  const [closing, setClosing] = useState<number | null>(null);
+  const [showBar, setShowBar] = useState(false);
+  const heroBtn = useRef<HTMLButtonElement>(null);
+
+  const params = useMemo(() => {
+    try {
+      return new URLSearchParams(window.location.search);
+    } catch (e) {
+      return new URLSearchParams();
+    }
+  }, []);
+  const ref = params.get("ref") || "";
+  const view = params.get("view") || "";
+
+  useEffect(() => {
+    document.title = view === "booked" ? "You're booked | Pareto Talent" : view === "thanks" ? "Thank you | Pareto Talent" : "How many tabs does your brain have open? | Pareto Talent";
+  }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
+
+  useEffect(() => {
+    const el = heroBtn.current;
+    if (step !== 0 || !el || typeof IntersectionObserver === "undefined") {
+      setShowBar(false);
+      return;
+    }
+    const io = new IntersectionObserver(([entry]) => setShowBar(!entry.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, [step]);
+
+  useEffect(() => {
+    if (step !== 4) {
+      setClosing(null);
+      return;
+    }
+    const n = loops.length;
+    const reduce = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setClosing(0);
+      return;
+    }
+    setClosing(n);
+    let c = n;
+    let iv: number | undefined;
+    const t = window.setTimeout(() => {
+      iv = window.setInterval(() => {
+        c -= 1;
+        setClosing(c);
+        if (c <= 0 && iv !== undefined) window.clearInterval(iv);
+      }, 320);
+    }, 900);
+    return () => {
+      window.clearTimeout(t);
+      if (iv !== undefined) window.clearInterval(iv);
+    };
+  }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const toggleLoop = (id: string) => {
+    setLoopErr("");
+    setLoops((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+  };
+  const toggleApproved = (id: string) => setApproved((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+
+  const q = qualify(scene);
+  const type = pickType(loops, root);
+  const shownLoops = loops.slice(0, 3).map((id) => LOOP_BY_ID[id]);
+  const n3 = shownLoops.length;
+  const more = loops.length - n3;
+  const shownTabs = step === 4 && closing !== null ? closing : loops.length;
+
+  const buildPayload = () => {
+    const n = loops.length;
+    const intro =
+      n === 1
+        ? "You had 1 tab open in your head:"
+        : n <= 3
+        ? "You had " + n + " tabs open in your head:"
+        : "You had " + n + " tabs open in your head. The first three:";
+    const source = ref ? "referral" : "direct";
+    return {
+      first_name: first.trim(), last_name: last.trim(), email: email.trim(), consent: true,
+      country: scene.country || "", role: scene.role || "", team_size: scene.team || "", revenue_band: scene.revenue || "", timeline: scene.timing || "",
+      qualified: q.qualified ? "yes" : "no", qualified_reasons: q.reasons.join(","),
+      result_type: type, result_label: TYPES[type].label, stuck_tab: root,
+      tabs_open: n, tabs_open_text: n + " " + tabWord(n), tabs_all: loops.map((id) => LOOP_BY_ID[id].chip).join(" | "),
+      email_intro: intro,
+      tabs_list_html: "<ul>" + shownLoops.map((l) => "<li>" + esc(l.chip) + "</li>").join("") + "</ul>",
+      plan_list_html: shownLoops.map((l) => "<p>&#9744; <b>" + esc(l.tab) + ":</b> " + esc(l.brief) + "</p>").join(""),
+      pattern_line: TYPES[type].pattern,
+      close_yourself_heading: smallThings(n3),
+      close_list_html: "<ol>" + shownLoops.map((l) => "<li>" + esc(l.close) + "</li>").join("") + "</ol>",
+      source, ref,
+      utm_source: params.get("utm_source") || "", utm_medium: params.get("utm_medium") || "", utm_campaign: params.get("utm_campaign") || "",
+    };
+  };
+
+  const send = async () => {
+    if (WEBHOOK_URL.includes("REPLACE_WITH")) {
+      setStatus("demo");
+      return;
+    }
+    setStatus("sending");
+    try {
+      const p = buildPayload();
+      const mode: string = SEND_MODE;
+      if (mode === "json") {
+        const res = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(p) });
+        if (!res.ok) throw new Error("bad status");
+      } else if (mode === "text") {
+        await fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(p) });
+      } else {
+        const body = new URLSearchParams();
+        Object.entries(p).forEach(([k, v]) => body.append(k, String(v)));
+        await fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body });
+      }
+      setStatus("sent");
+    } catch (e) {
+      setStatus("failed");
+    }
+  };
+
+  const toScene = () => {
+    if (loops.length === 0) {
+      setLoopErr("Tap at least one tab first.");
+      return;
+    }
+    setStep(2);
+  };
+  const toGate = () => {
+    if (QUESTIONS.some((x) => !scene[x.key])) {
+      setShowMissing(true);
+      return;
+    }
+    setStep(3);
+  };
+  const submitEmail = () => {
+    const e: Record<string, string> = {};
+    if (!first.trim()) e.first = "Enter your first name.";
+    if (!last.trim()) e.last = "Enter your last name.";
+    if (!/^\S+@\S+\.\S+$/.test(email.trim())) e.email = "Enter a valid email address.";
+    if (!consent) e.consent = "Tick the box to continue.";
+    setErrs(e);
+    if (Object.keys(e).length) return;
+    setStep(4);
+    if (!q.qualified) {
+      try {
+        window.history.replaceState(null, "", "?view=thanks");
+      } catch (err) {
+        /* ignore */
+      }
+    }
+    void send();
+  };
+  const restart = () => {
+    setStep(0);
+    setLoops([]);
+    setRoot("");
+    setScene({});
+    setShowMissing(false);
+    setApproved([]);
+    setStatus("idle");
+    setErrs({});
+  };
+
+  const progress = step === 0 ? 0 : Math.min(step, 4) * 25;
+  const n = loops.length;
+
+  const statusEl = (
+    <>
+      {status === "sent" && <p className="pt-ok">A copy is on its way to {email.trim()}.</p>}
+      {status === "sending" && <p className="pt-ok">Sending a copy to {email.trim()}...</p>}
+      {status === "demo" && <p className="pt-ok">Demo mode: the webhook address is not set, so nothing was sent.</p>}
+      {status === "failed" && (
+        <p className="pt-err">We couldn't send the email copy. Check your address and try again. <button className="pt-btn pt-ghost pt-small-btn" style={{ marginLeft: 8 }} onClick={() => void send()}>Try again</button></p>
+      )}
+    </>
+  );
+
+  if (view === "booked") return <BookedPage />;
+  if (view === "thanks") return <ThanksPage />;
+
+  return (
+    <div className="pt-root" style={step === 0 ? { paddingBottom: 110 } : undefined}>
+      <style>{CSS}</style>
+      <div className={"pt-wrap" + (step === 0 ? " pt-wide" : "")}>
+        <img className="pt-logo" src={LOGO} alt="Pareto Talent" />
+
+        {step >= 1 && step <= 3 && (
+          <div className="pt-progress" aria-hidden="true">
+            <div style={{ width: progress + "%" }} />
+          </div>
+        )}
+
+        {step === 0 && (
+          <>
+          <div className="pt-hero">
+            <div>
+              <h1 className="pt-h1">
+                How many <span className="pt-gr">tabs</span> does your brain have open?
+              </h1>
+              <p className="pt-lede">Every unanswered email, forgotten follow-up and pending decision is a tab, and too many of them slow you down. Take the free check, get a one-page checklist to close the first ones, and see how a trained Right Hand, your own assistant who stays one step ahead of you, would handle the rest.</p>
+              <button className="pt-btn" ref={heroBtn} onClick={() => setStep(1)}>{START_LABEL}</button>
+              <p className="pt-hint" style={{ marginTop: 16 }}>Free. About a minute. No typing.</p>
+            </div>
+            {HERO_IMAGE ? <img className="pt-heroimg" src={HERO_IMAGE} alt={HERO_IMAGE_ALT} fetchPriority="high" /> : <HeroDemo />}
+          </div>
+          <Landing />
+          </>
+        )}
+
+        {step === 1 && (
+          <div className="pt-card">
+            <p className="pt-eyebrow">Step 1 of 3</p>
+            <TabFrame ids={loops} shown={n} sticky />
+            <h2 className="pt-h2">Tap what's open in your head.</h2>
+            <p className="pt-hint">Tap as many as ring true. Each one opens a tab.</p>
+            <div className="pt-chips" role="group" aria-label="Tabs open in your head">
+              {LOOPS.map((l) => (
+                <button key={l.id} className="pt-chip" aria-pressed={loops.includes(l.id)} onClick={() => toggleLoop(l.id)}>
+                  <span className="pt-dot"><Check /></span>
+                  <span>{l.chip}</span>
+                </button>
+              ))}
+            </div>
+            <p className="pt-label">And the one tab you can't seem to close <small>(pick one)</small></p>
+            <div className="pt-chips" role="group" aria-label="The tab you can't seem to close">
+              {ROOTS.map((r) => (
+                <button key={r.value} className="pt-chip" aria-pressed={root === r.value} onClick={() => setRoot(root === r.value ? "" : r.value)}>
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <div className="pt-bar">
+              <span className="pt-count">{n} of {LOOPS.length} tabs open</span>
+              <button className="pt-btn" onClick={toScene}>Show me my cleanup plan</button>
+            </div>
+            {loopErr && <p className="pt-err" role="alert">{loopErr}</p>}
+            <button className="pt-back" onClick={() => setStep(0)}>Back</button>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="pt-card">
+            <p className="pt-eyebrow">Step 2 of 3</p>
+            <h2 className="pt-h2">{n} {n === 1 ? "tab is" : "tabs are"} open. Now set the scene.</h2>
+            <p className="pt-hint">Five taps so your Tab Cleanup Plan fits your business.</p>
+            {QUESTIONS.map((qq) => (
+              <div key={qq.key}>
+                <p className="pt-label">{qq.title}</p>
+                <div className="pt-chips" role="group" aria-label={qq.title}>
+                  {qq.opts.map((o) => (
+                    <button key={o.value} className="pt-chip" aria-pressed={scene[qq.key] === o.value} onClick={() => setScene((p) => ({ ...p, [qq.key]: o.value }))}>
+                      {o.label}
+                    </button>
+                  ))}
+                </div>
+                {showMissing && !scene[qq.key] && <p className="pt-err" role="alert">Pick one to continue.</p>}
+              </div>
+            ))}
+            <div className="pt-bar">
+              <button className="pt-back" style={{ margin: 0 }} onClick={() => setStep(1)}>Back</button>
+              <button className="pt-btn" onClick={toGate}>Continue</button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="pt-card">
+            <p className="pt-eyebrow">Step 3 of 3</p>
+            <div className="pt-lock">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#50D3A1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+              <span>Your Tab Cleanup Plan is ready: a plan for {n === 1 ? "your tab" : "each of your " + n + " tabs"}, plus {smallWords(n3)} you can close yourself today.</span>
+            </div>
+            <h2 className="pt-h2">Where should we send it?</h2>
+            <p className="pt-hint">You'll see it on screen right away, and get a copy by email.</p>
+            <div className="pt-field"><label htmlFor="f1">First name</label><input id="f1" className="pt-input" autoComplete="given-name" value={first} onChange={(e) => setFirst(e.target.value)} />{errs.first && <p className="pt-err" role="alert">{errs.first}</p>}</div>
+            <div className="pt-field"><label htmlFor="f1b">Last name</label><input id="f1b" className="pt-input" autoComplete="family-name" value={last} onChange={(e) => setLast(e.target.value)} />{errs.last && <p className="pt-err" role="alert">{errs.last}</p>}</div>
+            <div className="pt-field"><label htmlFor="f2">Email</label><input id="f2" type="email" className="pt-input" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />{errs.email && <p className="pt-err" role="alert">{errs.email}</p>}</div>
+            <label className="pt-check"><input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} /><span>I agree to receive emails from Pareto Talent. <a href={TERMS_URL} target="_blank" rel="noopener noreferrer" style={{ color: "#50D3A1" }}>Terms and privacy</a></span></label>
+            {errs.consent && <p className="pt-err" role="alert">{errs.consent}</p>}
+            <button className="pt-btn" onClick={submitEmail}>Send me my plan</button>
+            <br />
+            <button className="pt-back" onClick={() => setStep(2)}>Back</button>
+          </div>
+        )}
+
+        {step === 4 && (
+          <div>
+            <p className="pt-eyebrow">{q.qualified ? first.trim() + "'s Tab Cleanup Plan" : "Thank you, " + first.trim()}</p>
+            <h1 className="pt-h1">Your brain had {n} {tabWord(n)} open. Here is how a Right Hand would <span className="pt-gr">handle them</span>.</h1>
+            {!q.qualified && statusEl}
+            <TabFrame ids={loops} shown={shownTabs} done />
+            <p className="pt-lede">Each item below is ready for your OK. Approve it and it's done. These are examples of what a Right Hand brings you, not a record of your real business.</p>
+            <h3 className="pt-h3" style={{ marginTop: 0 }}>Ready for your OK</h3>
+
+            <div className="pt-card" style={{ padding: "22px 28px 18px" }}>
+              {shownLoops.map((l) => (
+                <div className="pt-brief" key={l.id}>
+                  <div>
+                    <span className="pt-tag">{l.tab}</span>
+                    <p>{l.brief}</p>
+                  </div>
+                  <button className="pt-btn pt-ghost pt-small-btn" aria-pressed={approved.includes(l.id)} onClick={() => toggleApproved(l.id)}>
+                    {approved.includes(l.id) ? "Approved" : "Approve"}
+                  </button>
+                </div>
+              ))}
+              {more > 0 && <p className="pt-note">+ {more} more {more === 1 ? "tab" : "tabs"}, each ready for your OK the same way.</p>}
+            </div>
+
+            <h3 className="pt-h3">What we noticed</h3>
+            <p className="pt-lede" style={{ marginBottom: 0 }}>{TYPES[type].pattern}</p>
+
+            {q.qualified ? (
+              <div className="pt-cta">
+                <h3>{QUAL_HEAD}</h3>
+                <p>{QUAL_BODY}</p>
+                <a className="pt-btn" href={BOOKING_URL}>{CTA_LABEL}</a>
+                <p className="pt-sub">Book a Matching Call</p>
+              </div>
+            ) : null}
+            <p className="pt-lede" style={{ margin: "34px 0 14px", color: "#F2F6F4", fontWeight: 600 }}>{smallThings(n3)}</p>
+            <ol className="pt-list">
+              {shownLoops.map((l) => (
+                <li key={l.id}><span>{l.close}</span></li>
+              ))}
+            </ol>
+            {GUIDE_URL && (
+              <p className="pt-links" style={{ margin: "18px 0 0" }}>
+                Want a full checklist? <a href={GUIDE_URL}>Download the one-page guide (PDF)</a>. Print it. Tick it. Close it.
+              </p>
+            )}
+
+            {q.qualified && statusEl}
+            {!q.qualified && <ThanksSections showGuide={false} />}
+            <button className="pt-back" onClick={restart}>Start over</button>
+          </div>
+        )}
+      </div>
+      {step === 0 && showBar && (
+        <div className="pt-stickycta">
+          <button className="pt-btn" onClick={() => setStep(1)}>{START_LABEL}</button>
+        </div>
+      )}
+    </div>
+  );
+}
